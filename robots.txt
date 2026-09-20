@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sirazul438.github.io/Keya-Store/sitemap.xml
