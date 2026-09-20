@@ -159,7 +159,12 @@ nav ul a:hover{color:var(--pink);}
 .tile:hover{box-shadow:0 12px 26px rgba(22,33,62,0.22);}
 @media(min-width:801px){ .hero-grid-compact .lead{font-size:1.05rem; max-width:48ch;} }
 .tile.grow{flex-grow:1.55; box-shadow:0 14px 28px rgba(22,33,62,0.24); z-index:2;}
-.tile img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block; will-change:transform;}
+.tile img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block; will-change:transform; animation:tileDrift 6s ease-in-out infinite alternate;}
+@keyframes tileDrift{from{scale:1;} to{scale:1.1;}}
+.trow:nth-child(1) .tile:nth-child(2) img{animation-duration:7.5s; animation-delay:-2s;}
+.trow:nth-child(2) .tile:nth-child(1) img{animation-duration:6.8s; animation-delay:-4s;}
+.trow:nth-child(2) .tile:nth-child(2) img{animation-duration:8s; animation-delay:-1s;}
+@media (prefers-reduced-motion:reduce){ .tile img{animation:none;} }
 @media(max-width:800px){
   .hero-grid-compact{grid-template-columns:1fr; gap:14px;}
   .hero-thumbs{margin-top:6px;}
@@ -745,7 +750,6 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
       return {src: i.src, id: c && c.id, title: c && c.querySelector('h3') ? c.querySelector('h3').textContent : ''};
     }).filter(function(p){ return p.src && p.id; });
   }
-  var last = -1;
 
   // slide a new image into a tile from the left or the right
   function swap(tile, item, dir){
@@ -760,41 +764,43 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     tile.setAttribute('aria-label', 'প্রোডাক্ট দেখুন: ' + item.title);
     var go = function(){
       void nx.offsetWidth;
-      var t = 'transform .8s cubic-bezier(.65,0,.35,1)';
+      var t = 'transform .9s cubic-bezier(.65,0,.35,1)';
       nx.style.transition = t; cur.style.transition = t;
       nx.style.transform = 'translateX(0)';
       cur.style.transform = 'translateX(' + to + ')';
-      setTimeout(function(){ if(cur.parentNode) cur.parentNode.removeChild(cur); }, 950);
+      setTimeout(function(){ if(cur.parentNode) cur.parentNode.removeChild(cur); }, 1050);
     };
     if(nx.decode){ nx.decode().then(go, go); } else { nx.onload = go; }
   }
 
-  // make one tile a bit bigger for a moment
+  // make one tile a bit bigger for a moment (one per row, so the row never gets squeezed twice)
   function grow(tile){
-    tiles.forEach(function(t){ if(t !== tile) t.classList.remove('grow'); });
+    Array.prototype.forEach.call(tile.parentNode.children, function(t){ if(t !== tile) t.classList.remove('grow'); });
     tile.classList.add('grow');
-    setTimeout(function(){ tile.classList.remove('grow'); }, 1900 + Math.random() * 1000);
+    clearTimeout(tile._g);
+    tile._g = setTimeout(function(){ tile.classList.remove('grow'); }, 1700 + Math.random() * 900);
   }
 
-  function tick(){
-    if(!document.hidden){
-      var i;
-      do { i = Math.floor(Math.random() * tiles.length); } while(i === last && tiles.length > 1);
-      last = i;
-      var pool = getPool();
-      var inUse = tiles.map(function(t){ return t.dataset.target; });
-      var free = pool.filter(function(p){ return inUse.indexOf(p.id) === -1; });
-      if(Math.random() < 0.2 || !free.length){
-        grow(tiles[i]);                       // sometimes just a size pulse
-      } else {
-        swap(tiles[i], free[Math.floor(Math.random() * free.length)], Math.random() < 0.5 ? 'ltr' : 'rtl');
-        if(Math.random() < 0.4) grow(tiles[i]);
+  // every tile has its own timer, so all four keep changing at the same time
+  function runTile(tile, i){
+    function step(){
+      if(!document.hidden){
+        var pool = getPool();
+        var inUse = tiles.map(function(t){ return t.dataset.target; });
+        var free = pool.filter(function(p){ return inUse.indexOf(p.id) === -1; });
+        if(!free.length || Math.random() < 0.12){
+          grow(tile);
+        } else {
+          swap(tile, free[Math.floor(Math.random() * free.length)], Math.random() < 0.5 ? 'ltr' : 'rtl');
+          if(Math.random() < 0.35) grow(tile);
+        }
       }
+      setTimeout(step, 1700 + Math.random() * 1300);
     }
-    setTimeout(tick, 1600 + Math.random() * 1400);
+    setTimeout(step, 400 + i * 550 + Math.random() * 500);   // staggered start
   }
 
-  window.addEventListener('load', function(){ setTimeout(tick, 1800); });
+  window.addEventListener('load', function(){ tiles.forEach(runTile); });
 })();
 </script>
 </body>
