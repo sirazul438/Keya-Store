@@ -153,17 +153,17 @@ nav ul a:hover{color:var(--pink);}
   position:relative; flex:1 1 0; min-width:0; height:142px; overflow:hidden; isolation:isolate;
   border-radius:16px; border:3px solid #fff; background:#f3e9e2;
   box-shadow:0 6px 16px rgba(22,33,62,0.12);
-  transition:flex-grow .7s cubic-bezier(.4,0,.2,1), box-shadow .7s ease;
+  transition:flex-grow 1.3s cubic-bezier(.45,0,.25,1), box-shadow 1.3s ease;
 }
 .tile:focus-visible{outline:3px solid var(--pink); outline-offset:2px;}
 .tile:hover{box-shadow:0 12px 26px rgba(22,33,62,0.22);}
 @media(min-width:801px){ .hero-grid-compact .lead{font-size:1.05rem; max-width:48ch;} }
-.tile.grow{flex-grow:1.55; box-shadow:0 14px 28px rgba(22,33,62,0.24); z-index:2;}
-.tile img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block; will-change:transform; animation:tileDrift 6s ease-in-out infinite alternate;}
-@keyframes tileDrift{from{scale:1;} to{scale:1.1;}}
-.trow:nth-child(1) .tile:nth-child(2) img{animation-duration:7.5s; animation-delay:-2s;}
-.trow:nth-child(2) .tile:nth-child(1) img{animation-duration:6.8s; animation-delay:-4s;}
-.trow:nth-child(2) .tile:nth-child(2) img{animation-duration:8s; animation-delay:-1s;}
+.tile.grow{flex-grow:1.4; box-shadow:0 14px 28px rgba(22,33,62,0.24); z-index:2;}
+.tile img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; display:block; will-change:transform; animation:tileDrift 16s ease-in-out infinite alternate;}
+@keyframes tileDrift{from{scale:1;} to{scale:1.07;}}
+.trow:nth-child(1) .tile:nth-child(2) img{animation-duration:19s; animation-delay:-5s;}
+.trow:nth-child(2) .tile:nth-child(1) img{animation-duration:17s; animation-delay:-9s;}
+.trow:nth-child(2) .tile:nth-child(2) img{animation-duration:22s; animation-delay:-3s;}
 @media (prefers-reduced-motion:reduce){ .tile img{animation:none;} }
 @media(max-width:800px){
   .hero-grid-compact{grid-template-columns:1fr; gap:14px;}
@@ -757,18 +757,18 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     var nx = new Image();
     nx.alt = item.title; nx.decoding = 'async'; nx.src = item.src;
     var from = dir === 'ltr' ? '-100%' : '100%';
-    var to   = dir === 'ltr' ? '100%'  : '-100%';
+    var to   = dir === 'ltr' ? '28%'   : '-28%';
     nx.style.transform = 'translateX(' + from + ')';
     tile.appendChild(nx);
     tile.dataset.target = item.id;
     tile.setAttribute('aria-label', 'প্রোডাক্ট দেখুন: ' + item.title);
     var go = function(){
       void nx.offsetWidth;
-      var t = 'transform .9s cubic-bezier(.65,0,.35,1)';
+      var t = 'transform 1.7s cubic-bezier(.37,0,.2,1)';
       nx.style.transition = t; cur.style.transition = t;
       nx.style.transform = 'translateX(0)';
       cur.style.transform = 'translateX(' + to + ')';
-      setTimeout(function(){ if(cur.parentNode) cur.parentNode.removeChild(cur); }, 1050);
+      setTimeout(function(){ if(cur.parentNode) cur.parentNode.removeChild(cur); }, 1900);
     };
     if(nx.decode){ nx.decode().then(go, go); } else { nx.onload = go; }
   }
@@ -778,7 +778,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     Array.prototype.forEach.call(tile.parentNode.children, function(t){ if(t !== tile) t.classList.remove('grow'); });
     tile.classList.add('grow');
     clearTimeout(tile._g);
-    tile._g = setTimeout(function(){ tile.classList.remove('grow'); }, 1700 + Math.random() * 900);
+    tile._g = setTimeout(function(){ tile.classList.remove('grow'); }, 3200 + Math.random() * 1500);
   }
 
   // every tile has its own timer, so all four keep changing at the same time
@@ -788,16 +788,16 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
         var pool = getPool();
         var inUse = tiles.map(function(t){ return t.dataset.target; });
         var free = pool.filter(function(p){ return inUse.indexOf(p.id) === -1; });
-        if(!free.length || Math.random() < 0.12){
+        if(!free.length || Math.random() < 0.15){
           grow(tile);
         } else {
           swap(tile, free[Math.floor(Math.random() * free.length)], Math.random() < 0.5 ? 'ltr' : 'rtl');
           if(Math.random() < 0.35) grow(tile);
         }
       }
-      setTimeout(step, 1700 + Math.random() * 1300);
+      setTimeout(step, 4600 + Math.random() * 2600);
     }
-    setTimeout(step, 400 + i * 550 + Math.random() * 500);   // staggered start
+    setTimeout(step, 700 + i * 1200 + Math.random() * 600);   // staggered start
   }
 
   window.addEventListener('load', function(){ tiles.forEach(runTile); });
