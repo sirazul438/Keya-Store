@@ -384,6 +384,98 @@ footer{
   background:var(--navy); color:#B7BDD1; padding:34px 0; text-align:center; font-size:0.9rem;
 }
 footer strong{color:#fff;}
+#order-overlay{
+  position:fixed; inset:0; background:rgba(10,10,15,0.68);
+  display:flex; align-items:flex-start; justify-content:center;
+  opacity:0; visibility:hidden; transition:opacity .25s ease;
+  z-index:10001; padding:24px 16px; overflow-y:auto;
+}
+#order-overlay.open{opacity:1; visibility:visible;}
+.order-modal{
+  background:#fff; border-radius:20px; max-width:440px; width:100%;
+  margin-top:30px; padding:26px; position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,0.35);
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.order-modal .close-x{
+  position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%;
+  background:#F3EDEA; border:none; font-size:1.1rem; cursor:pointer; color:var(--navy);
+}
+.order-modal h3{font-family:'Outfit',sans-serif; font-size:1.25rem; margin-bottom:2px;}
+.order-modal .om-price{color:var(--pink-deep); font-weight:700; margin-bottom:18px;}
+.order-modal label{display:block; font-weight:600; font-size:0.85rem; margin:12px 0 6px;}
+.order-modal input[type=text], .order-modal input[type=tel], .order-modal textarea{
+  width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px 12px;
+  font-family:inherit; font-size:0.92rem; background:#FBFAF9;
+}
+.order-modal textarea{resize:vertical; min-height:60px;}
+.order-modal .remember-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:0.85rem; color:var(--grey);}
+.order-modal .bkash-box{
+  background:#FFF1E6; border-radius:14px; padding:14px 16px; margin-top:18px; font-size:0.88rem;
+}
+.order-modal .bkash-box b{color:var(--pink-deep);}
+.order-modal .proof-tabs{display:flex; gap:8px; margin:14px 0 8px;}
+.order-modal .proof-tab{
+  flex:1; text-align:center; padding:9px 0; border-radius:10px; font-weight:700; font-size:0.85rem;
+  background:#F3EDEA; cursor:pointer; border:1.5px solid transparent;
+}
+.order-modal .proof-tab.active{background:rgba(233,30,140,0.10); border-color:var(--pink); color:var(--pink-deep);}
+.order-modal .proof-panel{display:none;}
+.order-modal .proof-panel.active{display:block;}
+.order-modal .confirm-btn{
+  width:100%; margin-top:18px; background:var(--pink); color:#fff; font-weight:700;
+  border:none; padding:13px 0; border-radius:999px; font-size:1rem; cursor:pointer;
+}
+.order-modal .err-msg{color:#D33; font-size:0.82rem; margin-top:8px; display:none;}
+.order-success{text-align:center; padding:10px 0;}
+.order-success .ok-icon{font-size:2.6rem; margin-bottom:8px;}
+.order-success h3{margin-bottom:8px;}
+.order-success p{color:var(--grey); font-size:0.9rem; margin-bottom:6px;}
+
+/* ===== Customer account + saved items ===== */
+nav ul{gap:18px;}
+@media(max-width:1024px){ nav ul{display:none;} }
+.brand{min-width:0; white-space:nowrap;}
+@media(max-width:480px){ .brand{font-size:.98rem; gap:8px;} .nav-btn .lbl{display:none;} }
+@media(max-width:400px){ .brand{font-size:.85rem;} }
+.nav-actions{display:flex; align-items:center; gap:8px;}
+.nav-btn{display:inline-flex; align-items:center; gap:6px; border:1.5px solid var(--line); background:#fff; color:var(--navy); font:700 .85rem 'Plus Jakarta Sans',sans-serif; padding:8px 14px; border-radius:999px; cursor:pointer;}
+.nav-btn:hover{border-color:var(--pink); color:var(--pink-deep);}
+.nav-btn.primary{background:var(--pink); border-color:var(--pink); color:#fff;}
+.nav-btn svg{width:18px; height:18px; fill:currentColor;}
+.nav-btn .badge{display:none; min-width:18px; height:18px; padding:0 5px; border-radius:9px; background:var(--pink); color:#fff; font-size:.7rem; align-items:center; justify-content:center;}
+.nav-btn .badge.show{display:inline-flex;}
+#nav-login-lbl{max-width:10ch; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.card{position:relative;}
+.save-btn{position:absolute; top:28px; right:28px; z-index:4; width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,.94); box-shadow:0 6px 14px rgba(0,0,0,.22); cursor:pointer; display:grid; place-items:center; color:var(--navy); transition:transform .15s ease,color .15s ease;}
+.save-btn svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2;}
+.save-btn:hover{transform:scale(1.08);}
+.save-btn[aria-pressed=true]{color:var(--pink);}
+.save-btn[aria-pressed=true] svg{fill:currentColor;}
+.save-btn:focus-visible,.nav-btn:focus-visible,.order-modal .proof-tab:focus-visible{outline:3px solid var(--pink); outline-offset:2px;}
+.acct-overlay{position:fixed; inset:0; background:rgba(10,10,15,.68); display:flex; align-items:flex-start; justify-content:center; opacity:0; visibility:hidden; transition:opacity .25s ease; z-index:10003; padding:24px 16px; overflow-y:auto;}
+.acct-overlay.open{opacity:1; visibility:visible;}
+.acct-overlay.right{padding:0; justify-content:flex-end; align-items:stretch; overflow:hidden; z-index:10002;}
+.order-modal input[type=password]{width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px 12px; font-family:inherit; font-size:.92rem; background:#FBFAF9;}
+.order-modal button.proof-tab{font:inherit; font-weight:700; color:var(--navy);}
+.ac-note{color:var(--grey); font-size:.85rem; margin:4px 0 6px;}
+.saved-drawer{width:min(400px,100%); background:#fff; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .28s ease; box-shadow:-20px 0 50px rgba(0,0,0,.25);}
+.acct-overlay.open .saved-drawer{transform:none;}
+.sd-head{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:18px 20px; border-bottom:1px solid var(--line);}
+.sd-head h3{font-family:'Outfit',sans-serif; font-size:1.15rem;}
+.sd-head small{display:block; color:var(--grey); font-size:.8rem;}
+.sd-acts{display:flex; gap:8px;}
+.sd-list{flex:1; overflow-y:auto; padding:6px 20px;}
+.sd-item{display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line);}
+.sd-item img{width:64px; height:64px; object-fit:cover; border-radius:12px; cursor:pointer;}
+.sd-item .t{flex:1; min-width:0; font-weight:700; font-size:.9rem;}
+.sd-item .p{color:var(--pink-deep); font-weight:600; font-size:.82rem; margin-top:2px;}
+.sd-item .nav-btn{padding:6px 10px; font-size:.78rem;}
+.sd-empty{text-align:center; color:var(--grey); padding:44px 10px; font-size:.92rem;}
+.sd-note{padding:12px 20px 18px; color:var(--grey); font-size:.78rem; border-top:1px solid var(--line);}
+.acct-toast{position:fixed; left:50%; bottom:24px; transform:translate(-50%,20px); background:var(--navy); color:#fff; padding:10px 18px; border-radius:999px; font-weight:600; font-size:.88rem; opacity:0; pointer-events:none; transition:opacity .25s ease,transform .25s ease; z-index:10005; max-width:90vw; text-align:center;}
+.acct-toast.show{opacity:1; transform:translate(-50%,0);}
+@media (prefers-reduced-motion:reduce){ .saved-drawer,.acct-toast,.acct-overlay,.save-btn{transition:none;} }
 </style>
 </head>
 <body id="top">
@@ -401,6 +493,10 @@ footer strong{color:#fff;}
       <li><a href="#handbags">Handbags</a></li>
       <li><a href="#contact">যোগাযোগ</a></li>
     </ul>
+    <div class="nav-actions">
+      <button type="button" class="nav-btn" id="nav-saved" aria-label="Saved items"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="lbl">Saved</span><span class="badge" id="nav-badge"></span></button>
+      <button type="button" class="nav-btn primary" id="nav-login"><span id="nav-login-lbl">Login</span></button>
+    </div>
   </div>
 </nav>
 
@@ -449,8 +545,8 @@ footer strong{color:#fff;}
         <div class="desc">ফেসেটেড রঙিন চুড়ির সেট, সাথে গোল্ডেন ঘুঙুর চার্ম। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more107'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more107">ফিচার: Multicolor Churi Set, Golden Ghungroo Charm।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Multicolor%20Churi%20Set" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳650 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Multicolor Churi Set", 650)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="jewellery-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -459,8 +555,8 @@ footer strong{color:#fff;}
         <div class="desc">গাঢ় সবুজ ফেসেটেড চুড়ির সেট, গোল্ডেন বার আর ঘুঙুর ডিটেইলসহ। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more108'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more108">ফিচার: Emerald Green Faceted Churi, Golden Bar & Ghungroo Detail।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Emerald%20Green%20Churi%20Set" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳750 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Emerald Green Churi Set", 750)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="jewellery-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -469,8 +565,8 @@ footer strong{color:#fff;}
         <div class="desc">পার্ল ড্রপ আর সবুজ স্টোনের ভারী চাঁদবালি স্টাইল কানের দুল। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more109'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more109">ফিচার: Chandbali Style, Pearl Drops, Green Stone Detail।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Green%20Pearl%20Chandbali%20Earrings" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳650 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Green Pearl Chandbali Earrings", 650)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="jewellery-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -479,8 +575,8 @@ footer strong{color:#fff;}
         <div class="desc">মেরুন স্টোন, পার্ল আর গোল্ডেন জালির ঝুমকা — চাঁদবালি টপসহ। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more110'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more110">ফিচার: Chandbali Top, Golden Jali Jhumka, Maroon Stone & Pearl।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Maroon%20Pearl%20Jhumka%20Earrings" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳600 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Maroon Pearl Jhumka Earrings", 600)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="jewellery-5">
         <span class="soon-ribbon">Coming Soon</span>
@@ -489,8 +585,8 @@ footer strong{color:#fff;}
         <div class="desc">পিংক স্টোন আর ঝিলমিল ক্রিস্টালের ফুলেল ঝুমকা কানের দুল। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more111'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more111">ফিচার: Pink Stone, Sparkling Crystal, Floral Jhumka।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Pink%20Jhumka%20Earrings" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳500 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Pink Jhumka Earrings", 500)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -518,7 +614,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more101"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1,399 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Premium%20Cotton%20%E0%A6%A5%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%AA%E0%A6%BF%E0%A6%B8%20-%20%E0%A7%B31%2C399" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Premium Cotton থ্রি-পিস", 1399)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="boutique-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -533,7 +629,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more102"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1,250 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Leopard-Print%20Cotton%20%E0%A6%A5%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%AA%E0%A6%BF%E0%A6%B8%20-%20%E0%A7%B31%2C250" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Leopard-Print Cotton থ্রি-পিস", 1250)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="boutique-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -548,7 +644,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more103"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1,199 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Embroidered%20Cotton%20%E0%A6%A5%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%AA%E0%A6%BF%E0%A6%B8%20-%20%E0%A7%B31%2C199" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Embroidered Cotton থ্রি-পিস", 1199)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="boutique-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -561,7 +657,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more104"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳999 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Floral%20Cotton%20%E0%A6%A5%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%AA%E0%A6%BF%E0%A6%B8%20-%20%E0%A7%B3999" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Floral Cotton থ্রি-পিস", 999)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -584,8 +680,8 @@ footer strong{color:#fff;}
         <div class="desc">টিল ব্লু বডিতে কপার জরির বুটি, সাথে পার্পল বর্ডার আর পেজলি আঁচল। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more112'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more112">ফিচার: Teal Blue Body, Copper Zari Butta, Purple Border, Paisley Pallu।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Teal%20Copper%20Zari%20Silk%20Saree" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,790 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Teal Copper Zari Silk Saree", 1790)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="sarees-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -594,8 +690,8 @@ footer strong{color:#fff;}
         <div class="desc">গাঢ় মেরুন বডি, কপার-গোল্ড জরির নকশা আর রিচ বর্ডার। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more113'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more113">ফিচার: Maroon Body, Copper-Gold Zari Design, Rich Border।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Maroon%20Copper%20Zari%20Silk%20Saree" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,890 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Maroon Copper Zari Silk Saree", 1890)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="sarees-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -604,8 +700,8 @@ footer strong{color:#fff;}
         <div class="desc">রয়্যাল ব্লু বডিতে কপার জরির বুটি, সাথে রেড-কপার আঁচল। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more114'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more114">ফিচার: Royal Blue Body, Copper Zari Butta, Red-Copper Pallu।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Royal%20Blue%20Copper%20Zari%20Silk%20Saree" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,890 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Royal Blue Copper Zari Silk Saree", 1890)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="sarees-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -614,8 +710,8 @@ footer strong{color:#fff;}
         <div class="desc">বটল গ্রিন বডিতে কপার জরির বুটি, সাথে লোটাস ডিজাইনের ভারী বর্ডার। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more115'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more115">ফিচার: Bottle Green Body, Copper Zari Butta, Lotus Design Heavy Border।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Bottle%20Green%20Copper%20Zari%20Silk%20Saree" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,990 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Bottle Green Copper Zari Silk Saree", 1990)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -640,7 +736,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more1"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1000 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Braided%20Type-C%20Cable%20-%20%E0%A7%B31000" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Braided Type-C Cable", 1000)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -650,7 +746,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more2"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1500 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Fast%20Charging%20Adapter%20Set%20-%20%E0%A7%B31500" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Fast Charging Adapter Set", 1500)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -660,7 +756,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more3"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1800 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Wireless%20Earbuds%20Pro%20-%20%E0%A7%B31800" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Wireless Earbuds Pro", 1800)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -670,7 +766,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more4"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1200 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Wired%20In-Ear%20Earphones%20-%20%E0%A7%B31200" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Wired In-Ear Earphones", 1200)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-5">
         <span class="soon-ribbon">Coming Soon</span>
@@ -680,7 +776,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more5"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳2000 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Premium%20Over-Ear%20Headphones%20-%20%E0%A7%B32000" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Premium Over-Ear Headphones", 2000)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-6">
         <span class="soon-ribbon">Coming Soon</span>
@@ -690,7 +786,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more6"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1600 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Bluetooth%20Neckband%20Earphones%20-%20%E0%A7%B31600" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Bluetooth Neckband Earphones", 1600)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-7">
         <span class="soon-ribbon">Coming Soon</span>
@@ -700,7 +796,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more7"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳2000 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%2030000mAh%20Fast%20Charge%20Powerbank%20-%20%E0%A7%B32000" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("30000mAh Fast Charge Powerbank", 2000)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="tech-8">
         <span class="soon-ribbon">Coming Soon</span>
@@ -710,7 +806,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more8"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1900 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Smart%20Fitness%20Watch%20-%20%E0%A7%B31900" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Smart Fitness Watch", 1900)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -734,7 +830,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more9"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1400 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Canon%20Rose%20Gold%20Watch%20-%20%E0%A7%B31400" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Canon Rose Gold Watch", 1400)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="watches-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -744,7 +840,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more10"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1600 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Blue%20Leather%20Strap%20Watch%20-%20%E0%A7%B31600" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Blue Leather Strap Watch", 1600)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="watches-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -753,8 +849,8 @@ footer strong{color:#fff;}
         <div class="desc">অরেঞ্জ স্ট্র্যাপের Smart Watch — লং ব্যাটারি, Water Proof আর ফিটনেস ট্র্যাকিং। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more105'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more105">ফিচার: Long Battery Life, Water Proof, Fitness Tracking।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Globo%20Watch%20X%20Smart%20Watch" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,650 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Globo Watch X Smart Watch", 1650)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="watches-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -763,8 +859,8 @@ footer strong{color:#fff;}
         <div class="desc">ব্ল্যাক স্ট্র্যাপের Smart Watch — Bluetooth কল, 7 দিনের ব্যাটারি আর হেলথ মনিটরিং। <a class="more-link" href="javascript:void(0)" onclick="var d=document.getElementById('more106'); d.style.display = d.style.display==='block' ? 'none' : 'block'; this.textContent = d.style.display==='block' ? 'কম -' : 'আরও +';">আরও +</a></div>
         <div class="more-details" id="more106">ফিচার: AI-Generated Watch Faces, Bluetooth Call, 7 Days Battery Life, 24-hour Health Monitoring।</div>
         <div class="soon-box">শীঘ্রই আসছে</div>
-        <div class="price" style="font-size:1rem;">দাম জানতে মেসেজ করুন <span>WhatsApp-এ জানিয়ে দেওয়া হবে</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%E0%A6%B0%20%E0%A6%A6%E0%A6%BE%E0%A6%AE%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Oraimo%20Smart%20Watch" target="_blank" rel="noopener">দাম জানুন</a>
+        <div class="price">৳1,950 <span>ফিক্সড প্রাইস</span></div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Oraimo Smart Watch", 1950)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -788,7 +884,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more11"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1800 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Beige%20Quilted%20Handbag%20-%20%E0%A7%B31800" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Beige Quilted Handbag", 1800)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="handbags-2">
         <span class="soon-ribbon">Coming Soon</span>
@@ -798,7 +894,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more12"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1900 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Red%20Bow%20Tote%20Bag%20-%20%E0%A7%B31900" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Red Bow Tote Bag", 1900)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="handbags-3">
         <span class="soon-ribbon">Coming Soon</span>
@@ -808,7 +904,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more13"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳1700 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Green%20Pom-Pom%20Handbag%20-%20%E0%A7%B31700" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Green Pom-Pom Handbag", 1700)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card soon" id="handbags-4">
         <span class="soon-ribbon">Coming Soon</span>
@@ -818,7 +914,7 @@ footer strong{color:#fff;}
         <div class="more-details" id="more14"><!-- Add full description, warranty, size/dimensions etc. here --></div>
         <div class="soon-box">শীঘ্রই আসছে</div>
         <div class="price">৳2000 <span>ফিক্সড প্রাইস</span></div>
-        <a class="order-btn" href="https://wa.me/8801786555387?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B%20Keya%20Tech%20%26%20Boutique%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%87%20product-%E0%A6%9F%E0%A6%BE%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%3A%20Blue%20%26%20White%20Two-Tone%20Bag%20-%20%E0%A7%B32000" target="_blank" rel="noopener">অর্ডার করুন</a>
+        <button type="button" class="order-btn" onclick='openOrderModal("Blue &amp; White Two-Tone Bag", 2000)'>অর্ডার করুন</button>
       </div>
     </div>
   </div>
@@ -873,6 +969,84 @@ footer strong{color:#fff;}
 <footer>
   <div class="wrap"><strong>Keya Tech & Boutique</strong> — BoroHorishpur, বাস টার্মিনাল, নাটোর &nbsp;·&nbsp; © 2026</div>
 </footer>
+
+<div id="order-overlay" onclick="if(event.target===this) closeOrderModal()">
+  <div class="order-modal" id="order-modal-box">
+    <button class="close-x" onclick="closeOrderModal()" aria-label="Close">✕</button>
+    <div id="order-form-view">
+      <h3 id="om-product-name">Product</h3>
+      <div class="om-price" id="om-product-price">৳0</div>
+
+      <label for="om-name">নাম (Name) *</label>
+      <input type="text" id="om-name" placeholder="আপনার নাম লিখুন">
+
+      <label for="om-phone">ফোন নম্বর (Phone) *</label>
+      <input type="tel" id="om-phone" placeholder="01XXXXXXXXX">
+
+      <label for="om-address">ঠিকানা (Delivery Address) *</label>
+      <textarea id="om-address" placeholder="বাসা/হোল্ডিং, এলাকা, উপজেলা, জেলা"></textarea>
+
+      <div class="remember-row">
+        <input type="checkbox" id="om-remember">
+        <label for="om-remember" style="margin:0; font-weight:500;">পরের বার আমার তথ্য মনে রাখুন (Save my details)</label>
+      </div>
+
+      <div class="bkash-box">
+        <b>bKash Personal:</b> 01878511181 (MD Sirazul Islam)<br>
+        উপরের নম্বরে <b>Send Money</b> করে নিচে TrxID অথবা স্ক্রিনশট দিন।
+      </div>
+
+      <div class="proof-tabs">
+        <div class="proof-tab active" id="tab-trxid" onclick="setProofTab('trxid')">TrxID লিখুন</div>
+        <div class="proof-tab" id="tab-ss" onclick="setProofTab('ss')">স্ক্রিনশট দিন</div>
+      </div>
+      <div class="proof-panel active" id="panel-trxid">
+        <input type="text" id="om-trxid" placeholder="যেমনঃ 8N7A6ZK9P2">
+      </div>
+      <div class="proof-panel" id="panel-ss">
+        <input type="file" id="om-screenshot" accept="image/*">
+      </div>
+
+      <div class="err-msg" id="om-error">সব তথ্য সঠিকভাবে পূরণ করুন এবং TrxID বা স্ক্রিনশট দিন।</div>
+      <button class="confirm-btn" onclick="submitOrder()">অর্ডার কনফার্ম করুন</button>
+    </div>
+
+    <div id="order-success-view" class="order-success" style="display:none;">
+      <div class="ok-icon">✅</div>
+      <h3>অর্ডার পাঠানো হয়েছে!</h3>
+      <p>আপনার অর্ডার আইডি: <b id="om-order-id"></b></p>
+      <p>WhatsApp খুলছে — বার্তাটি পাঠিয়ে দিন। স্ক্রিনশট দিয়ে থাকলে চ্যাটে সেটি অ্যাটাচ করে দিন।</p>
+      <button class="confirm-btn" onclick="closeOrderModal()">ঠিক আছে</button>
+    </div>
+  </div>
+</div>
+
+<div id="acct-overlay" class="acct-overlay" role="dialog" aria-modal="true" aria-labelledby="ac-title">
+  <div class="order-modal">
+    <button type="button" class="close-x" id="ac-x" aria-label="Close">✕</button>
+    <h3 id="ac-title">আপনার Account</h3>
+    <p class="ac-note" id="ac-note"></p>
+    <div class="proof-tabs"><button type="button" class="proof-tab active" id="ac-tab-login">Login</button><button type="button" class="proof-tab" id="ac-tab-signup">নতুন Account</button></div>
+    <div id="ac-name-row" style="display:none;"><label for="ac-name">নাম *</label><input type="text" id="ac-name" autocomplete="name" placeholder="আপনার নাম লিখুন"></div>
+    <label for="ac-phone">মোবাইল নম্বর *</label>
+    <input type="tel" id="ac-phone" autocomplete="tel" placeholder="01XXXXXXXXX">
+    <label for="ac-pw">Password *</label>
+    <input type="password" id="ac-pw" autocomplete="current-password" placeholder="কমপক্ষে ৬ অক্ষর">
+    <div class="err-msg" id="ac-err"></div>
+    <button type="button" class="confirm-btn" id="ac-go">Login করুন</button>
+  </div>
+</div>
+<div id="sd-overlay" class="acct-overlay right" role="dialog" aria-modal="true" aria-label="Saved items">
+  <aside class="saved-drawer">
+    <div class="sd-head">
+      <div><h3>Saved Items</h3><small id="sd-name"></small></div>
+      <div class="sd-acts"><button type="button" class="nav-btn" id="sd-logout">Logout</button><button type="button" class="nav-btn" id="sd-x" aria-label="Close">✕</button></div>
+    </div>
+    <div class="sd-list" id="sd-list"></div>
+    <p class="sd-note">Saved list এই ব্রাউজারেই থাকে। অন্য ফোন বা ব্রাউজারে Login করলে এটি দেখা যাবে না।</p>
+  </aside>
+</div>
+<div id="acct-toast" class="acct-toast" role="status" aria-live="polite"></div>
 
 <div id="lightbox-overlay" onclick="if(event.target===this) closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="বন্ধ করুন">✕</button>
@@ -1011,6 +1185,278 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   }
 
   window.addEventListener('load', function(){ tiles.forEach(runTile); });
+})();
+</script>
+<script>
+(function(){
+  var STORAGE_KEY = 'keya_customer_info';
+  var ORDERS_KEY = 'keya_orders';
+  var currentProduct = { name: '', price: 0 };
+  var proofType = 'trxid';
+
+  function el(id){ return document.getElementById(id); }
+
+  window.openOrderModal = function(name, price){
+    currentProduct = { name: name, price: price };
+    el('om-product-name').textContent = name;
+    el('om-product-price').textContent = '৳' + price;
+    el('om-error').style.display = 'none';
+    el('order-form-view').style.display = 'block';
+    el('order-success-view').style.display = 'none';
+    setProofTab('trxid');
+    el('om-trxid').value = '';
+    var fileInput = el('om-screenshot');
+    if(fileInput) fileInput.value = '';
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if(saved){
+        el('om-name').value = saved.name || '';
+        el('om-phone').value = saved.phone || '';
+        el('om-address').value = saved.address || '';
+        el('om-remember').checked = true;
+      } else {
+        el('om-name').value = '';
+        el('om-phone').value = '';
+        el('om-address').value = '';
+        el('om-remember').checked = false;
+      }
+    } catch(e){}
+
+    el('order-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    history.pushState({orderModal:true}, '');
+  };
+
+  window.closeOrderModalUI = function(){
+    el('order-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.closeOrderModal = function(){
+    if(history.state && history.state.orderModal){ history.back(); }
+    else { closeOrderModalUI(); }
+  };
+
+  window.addEventListener('popstate', function(){ closeOrderModalUI(); });
+
+  window.setProofTab = function(type){
+    proofType = type;
+    el('tab-trxid').classList.toggle('active', type === 'trxid');
+    el('tab-ss').classList.toggle('active', type === 'ss');
+    el('panel-trxid').classList.toggle('active', type === 'trxid');
+    el('panel-ss').classList.toggle('active', type === 'ss');
+  };
+
+  window.submitOrder = function(){
+    var name = el('om-name').value.trim();
+    var phone = el('om-phone').value.trim();
+    var address = el('om-address').value.trim();
+    var trxid = el('om-trxid').value.trim();
+    var fileInput = el('om-screenshot');
+    var hasScreenshot = fileInput && fileInput.files && fileInput.files.length > 0;
+
+    var proofOk = (proofType === 'trxid' && trxid.length > 0) || (proofType === 'ss' && hasScreenshot);
+
+    if(!name || !phone || !address || !proofOk){
+      el('om-error').style.display = 'block';
+      return;
+    }
+    el('om-error').style.display = 'none';
+
+    if(el('om-remember').checked){
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify({name:name, phone:phone, address:address})); }
+      catch(e){}
+    } else {
+      try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    }
+
+    var orderId = 'KTB' + Date.now().toString().slice(-8);
+    var proofLine = proofType === 'trxid'
+      ? ('TrxID: ' + trxid)
+      : ('Payment proof: স্ক্রিনশট (এই চ্যাটে অ্যাটাচ করে দিন)');
+
+    try {
+      var orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+      orders.push({
+        id: orderId, product: currentProduct.name, price: currentProduct.price,
+        name: name, phone: phone, address: address,
+        proofType: proofType, trxid: proofType === 'trxid' ? trxid : '',
+        date: new Date().toISOString()
+      });
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+    } catch(e){}
+
+    var msgLines = [
+      'নতুন অর্ডার! Order ID: ' + orderId,
+      'Product: ' + currentProduct.name + ' - ৳' + currentProduct.price,
+      'নাম: ' + name,
+      'ফোন: ' + phone,
+      'ঠিকানা: ' + address,
+      proofLine
+    ];
+    var waText = encodeURIComponent(msgLines.join('\n'));
+    var waUrl = 'https://wa.me/8801786555387?text=' + waText;
+
+    el('om-order-id').textContent = orderId;
+    el('order-form-view').style.display = 'none';
+    el('order-success-view').style.display = 'block';
+
+    window.open(waUrl, '_blank');
+  };
+})();
+</script>
+<script>
+(function(){
+  var U = 'keya_users', S = 'keya_session', pending = null, mode = 'login', tt;
+  var HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+  function $(id){ return document.getElementById(id); }
+  function get(k, d){ try{ var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; }catch(e){ return d; } }
+  function put(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+  function me(){ var p = get(S, null), u = get(U, {}); return p && u[p] ? {phone:p, u:u[p]} : null; }
+  function saved(){ var m = me(); return m ? (m.u.saved || []) : []; }
+  function toast(t){ var e = $('acct-toast'); e.textContent = t; e.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ e.classList.remove('show'); }, 2200); }
+  function openO(id){ $(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeO(id){
+    $(id).classList.remove('open');
+    if(!document.querySelector('.acct-overlay.open, #order-overlay.open, #lightbox-overlay.open')) document.body.style.overflow = '';
+  }
+  function hash(pw, salt){
+    var s = salt + ':' + pw;
+    if(window.crypto && crypto.subtle && window.TextEncoder){
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function(b){
+        return Array.prototype.map.call(new Uint8Array(b), function(x){ return ('0' + x.toString(16)).slice(-2); }).join('');
+      });
+    }
+    var h = 5381; for(var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
+    return Promise.resolve('x' + h);
+  }
+
+  /* ---- heart button on every product card ---- */
+  Array.prototype.forEach.call(document.querySelectorAll('.card'), function(c){
+    if(!c.id || !c.querySelector('.prod-img')) return;
+    var b = document.createElement('button'), h = c.querySelector('h3');
+    b.type = 'button'; b.className = 'save-btn'; b.setAttribute('aria-pressed', 'false');
+    b.setAttribute('aria-label', 'Save: ' + (h ? h.textContent : c.id));
+    b.innerHTML = HEART;
+    b.onclick = function(e){ e.stopPropagation(); toggle(c.id); };
+    c.appendChild(b);
+  });
+
+  function setSaved(list){
+    var m = me(); if(!m) return;
+    var u = get(U, {}); u[m.phone].saved = list; put(U, u); refresh();
+  }
+  function toggle(id){
+    if(!me()){ pending = id; openLogin('login', 'Login করলে আপনার পছন্দের প্রোডাক্ট সেভ থাকবে।'); return; }
+    var l = saved().slice(), i = l.indexOf(id);
+    if(i > -1){ l.splice(i, 1); toast('Saved list থেকে সরানো হয়েছে'); } else { l.push(id); toast('সেভ হয়েছে ♥'); }
+    setSaved(l);
+  }
+  function refresh(){
+    var m = me(), ids = saved(), n = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.save-btn'), function(b){
+      b.setAttribute('aria-pressed', ids.indexOf(b.parentNode.id) > -1 ? 'true' : 'false');
+    });
+    ids.forEach(function(id){ if($(id)) n++; });
+    $('nav-badge').textContent = n; $('nav-badge').classList.toggle('show', n > 0);
+    $('nav-login-lbl').textContent = m ? m.u.name.split(' ')[0] : 'Login';
+    $('nav-login').classList.toggle('primary', !m);
+    if($('sd-overlay').classList.contains('open')) render();
+  }
+
+  /* ---- saved items drawer ---- */
+  function jump(id){
+    var c = $(id); if(!c) return;
+    closeO('sd-overlay');
+    var s = c.closest('.section');
+    if(c.classList.contains('extra') && s && !s.classList.contains('expanded')){ var mb = s.querySelector('.more-btn'); if(mb) mb.click(); }
+    setTimeout(function(){
+      c.scrollIntoView({behavior:'smooth', block:'center'});
+      c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+      setTimeout(function(){ c.classList.remove('flash'); }, 2100);
+    }, 80);
+  }
+  function el(tag, cls, txt){ var e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; }
+  function render(){
+    var m = me(), list = $('sd-list'), ids = saved(), shown = 0;
+    list.textContent = '';
+    $('sd-name').textContent = m ? m.u.name : '';
+    ids.forEach(function(id){
+      var c = $(id); if(!c) return;
+      var im = c.querySelector('.prod-img'), h = c.querySelector('h3'), p = c.querySelector('.price');
+      var it = el('div', 'sd-item'), img = el('img'), tx = el('div', 't');
+      img.src = im ? im.src : ''; img.alt = ''; img.onclick = function(){ jump(id); };
+      tx.appendChild(el('div', null, h ? h.textContent : id));
+      tx.appendChild(el('div', 'p', c.classList.contains('soon') ? 'শীঘ্রই আসছে' : (p && p.firstChild ? p.firstChild.textContent.trim() : '')));
+      var go = el('button', 'nav-btn', 'দেখুন'), rm = el('button', 'nav-btn', '✕');
+      go.type = rm.type = 'button'; rm.setAttribute('aria-label', 'Saved list থেকে সরান');
+      go.onclick = function(){ jump(id); };
+      rm.onclick = function(){ setSaved(saved().filter(function(x){ return x !== id; })); };
+      it.appendChild(img); it.appendChild(tx); it.appendChild(go); it.appendChild(rm);
+      list.appendChild(it); shown++;
+    });
+    if(!shown) list.appendChild(el('div', 'sd-empty', 'এখনো কিছু সেভ করা হয়নি। পছন্দের প্রোডাক্টের ♡ চাপুন।'));
+  }
+  function openDrawer(){ render(); openO('sd-overlay'); $('sd-x').focus(); }
+
+  /* ---- login / sign up ---- */
+  function setMode(m){
+    mode = m;
+    $('ac-tab-login').classList.toggle('active', m === 'login');
+    $('ac-tab-signup').classList.toggle('active', m === 'signup');
+    $('ac-name-row').style.display = m === 'signup' ? 'block' : 'none';
+    $('ac-pw').setAttribute('autocomplete', m === 'signup' ? 'new-password' : 'current-password');
+    $('ac-go').textContent = m === 'signup' ? 'Account খুলুন' : 'Login করুন';
+    $('ac-err').style.display = 'none';
+  }
+  function openLogin(m, note){ setMode(m || 'login'); $('ac-note').textContent = note || ''; openO('acct-overlay'); $('ac-phone').focus(); }
+  function err(t){ var e = $('ac-err'); e.textContent = t; e.style.display = 'block'; }
+  function done(phone){
+    put(S, phone);
+    var u = get(U, {})[phone], ci = get('keya_customer_info', null) || {};
+    ci.name = u.name; ci.phone = phone; put('keya_customer_info', ci);   // pre-fills the order form
+    closeO('acct-overlay'); $('ac-pw').value = '';
+    if(pending){
+      var l = (u.saved || []).slice(); if(l.indexOf(pending) < 0) l.push(pending);
+      pending = null; setSaved(l); toast('Login সফল — প্রোডাক্ট সেভ হয়েছে ♥');
+    } else { toast('স্বাগতম, ' + u.name + '!'); }
+    refresh();
+  }
+  function submit(){
+    var phone = $('ac-phone').value.replace(/[\s-]/g, ''), pw = $('ac-pw').value, name = $('ac-name').value.trim(), users = get(U, {});
+    if(!/^01[3-9]\d{8}$/.test(phone)) return err('সঠিক মোবাইল নম্বর দিন (যেমন 01XXXXXXXXX)।');
+    if(pw.length < 6) return err('Password কমপক্ষে ৬ অক্ষরের দিন।');
+    if(mode === 'signup'){
+      if(!name) return err('আপনার নাম লিখুন।');
+      if(users[phone]) return err('এই নম্বরে আগেই Account আছে — Login করুন।');
+      var salt = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      hash(pw, salt).then(function(h){
+        users[phone] = {name:name, salt:salt, hash:h, saved:[]};
+        if(!put(U, users)) return err('ব্রাউজার Storage বন্ধ থাকায় Account সেভ করা যাচ্ছে না।');
+        done(phone);
+      });
+    } else {
+      var u = users[phone];
+      if(!u) return err('এই নম্বরে Account নেই — আগে নতুন Account খুলুন।');
+      hash(pw, u.salt).then(function(h){ if(h !== u.hash) return err('Password মিলছে না।'); done(phone); });
+    }
+  }
+
+  $('nav-saved').onclick = function(){ me() ? openDrawer() : openLogin('login', 'Login করলে আপনার পছন্দের প্রোডাক্ট সেভ থাকবে।'); };
+  $('nav-login').onclick = function(){ me() ? openDrawer() : openLogin('login'); };
+  $('ac-tab-login').onclick = function(){ setMode('login'); };
+  $('ac-tab-signup').onclick = function(){ setMode('signup'); };
+  $('ac-go').onclick = submit;
+  $('ac-x').onclick = function(){ pending = null; closeO('acct-overlay'); };
+  $('sd-x').onclick = function(){ closeO('sd-overlay'); };
+  $('sd-logout').onclick = function(){ try{ localStorage.removeItem(S); }catch(e){} closeO('sd-overlay'); refresh(); toast('Logout হয়েছে'); };
+  $('acct-overlay').onclick = function(e){ if(e.target === this){ pending = null; closeO('acct-overlay'); } };
+  $('sd-overlay').onclick = function(e){ if(e.target === this) closeO('sd-overlay'); };
+  $('acct-overlay').addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.tagName === 'INPUT') submit(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeO('acct-overlay'); closeO('sd-overlay'); } });
+  window.addEventListener('storage', refresh);
+  refresh();
 })();
 </script>
 </body>
