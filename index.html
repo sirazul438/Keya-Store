@@ -385,6 +385,13 @@ nav ul a:hover{color:var(--pink);}
 .app-download-box .adb-text{flex:1; min-width:220px;}
 .app-download-box .adb-text h3{font-size:1.05rem; margin-bottom:4px;}
 .app-download-box .adb-text p{font-size:0.85rem; color:#B7BDD1;}
+.app-download-box .adb-steps{
+  margin-top:14px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:14px 16px; font-size:0.82rem; color:#E4E7F2;
+}
+.app-download-box .adb-steps b{color:#F5C24C; display:block; margin-bottom:8px; font-weight:700;}
+.app-download-box .adb-steps ol{margin:0; padding-left:18px; line-height:1.7; color:#B7BDD1;}
+.app-download-box .adb-steps ol b{display:inline; color:#8DEBD4; margin:0;}
 .app-download-box .btn{flex:none;}
 @media(max-width:600px){ .app-download-box{flex-direction:column; text-align:center;} }
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
@@ -1132,6 +1139,15 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
     <div class="adb-text">
       <h3>Keya Tech & Boutique অ্যাপ ইনস্টল করুন</h3>
       <p>Android ফোনে সরাসরি অ্যাপ হিসেবে ব্যবহার করুন — দ্রুত লোড, এবং হোম স্ক্রিনে শর্টকাট।</p>
+      <div class="adb-steps">
+        <b>⚠️ ইনস্টল করার সময় একটা সতর্কবার্তা (warning) দেখাতে পারে — এটা স্বাভাবিক, কারণ অ্যাপটি Google Play Store থেকে না নিয়ে সরাসরি ডাউনলোড করা হচ্ছে। ক্ষতিকর কিছু না, শুধু নিচের ধাপগুলো অনুসরণ করুন:</b>
+        <ol>
+          <li>APK ফাইলটি ডাউনলোড হওয়ার পর ফাইলে ট্যাপ করুন।</li>
+          <li>"এই ধরনের উৎস থেকে অনুমতি নেই" / "Install blocked" মেসেজ আসলে <b>Settings</b>-এ ট্যাপ করুন।</li>
+          <li><b>"Allow from this source"</b> অপশনটি চালু (on) করুন।</li>
+          <li>পিছনে ফিরে আবার APK ফাইলে ট্যাপ করে <b>Install</b> চাপুন।</li>
+        </ol>
+      </div>
     </div>
     <a class="btn btn-pink" href="Keya_Store.apk" download>⬇️ APK ডাউনলোড করুন</a>
   </div>
