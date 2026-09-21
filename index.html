@@ -576,6 +576,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
 .btn-navy{background:linear-gradient(135deg,#2B3A6B,#0B1330); color:#fff; box-shadow:0 12px 22px -10px rgba(22,33,62,.45);}
 .btn-purple{background:linear-gradient(135deg,#8B5CF6,#5B21B6); color:#fff; box-shadow:0 12px 22px -10px rgba(91,33,182,.45);}
 @media(max-width:400px){ .hero-ctas{gap:6px;} .hero-ctas .btn{font-size:.72rem; padding:10px 2px;} }
+.order-modal .confirm-btn:disabled{opacity:.65; cursor:wait;}
 </style>
 </head>
 <body id="top">
@@ -1186,29 +1187,25 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
 
       <div class="bkash-box">
         <b>bKash Personal:</b> 01878511181 (MD Sirazul Islam)<br>
-        উপরের নম্বরে <b>Send Money</b> করে নিচে TrxID অথবা স্ক্রিনশট দিন।
+        উপরের নম্বরে <b>Send Money</b> করে নিচে TrxID দিন।
       </div>
 
-      <div class="proof-tabs">
-        <div class="proof-tab active" id="tab-trxid" onclick="setProofTab('trxid')">TrxID লিখুন</div>
-        <div class="proof-tab" id="tab-ss" onclick="setProofTab('ss')">স্ক্রিনশট দিন</div>
-      </div>
       <div class="proof-panel active" id="panel-trxid">
-        <input type="text" id="om-trxid" placeholder="যেমনঃ 8N7A6ZK9P2">
-      </div>
-      <div class="proof-panel" id="panel-ss">
-        <input type="file" id="om-screenshot" accept="image/*">
+        <input type="text" id="om-trxid" placeholder="TrxID লিখুন — যেমনঃ 8N7A6ZK9P2">
       </div>
 
-      <div class="err-msg" id="om-error">সব তথ্য সঠিকভাবে পূরণ করুন এবং TrxID বা স্ক্রিনশট দিন।</div>
+      <div class="err-msg" id="om-error">সব তথ্য সঠিকভাবে পূরণ করুন এবং TrxID দিন।</div>
       <button class="confirm-btn" onclick="submitOrder()">অর্ডার কনফার্ম করুন</button>
     </div>
 
     <div id="order-success-view" class="order-success" style="display:none;">
-      <div class="ok-icon">✅</div>
-      <h3>অর্ডার পাঠানো হয়েছে!</h3>
+      <div class="ok-icon" id="om-ok-icon">✅</div>
+      <h3 id="om-ok-title">অর্ডার পাঠানো হয়েছে!</h3>
       <p>আপনার অর্ডার আইডি: <b id="om-order-id"></b></p>
-      <p>আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। ধন্যবাদ!</p>
+      <p id="om-ok-msg">আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। ধন্যবাদ!</p>
+      <div id="om-wa-box" style="display:none; margin:14px 0 6px;">
+        <a id="om-wa-link" class="confirm-btn" href="#" target="_blank" rel="noopener" style="display:block; text-align:center; text-decoration:none; background:linear-gradient(135deg,#25D366,#128C7E);">WhatsApp-এ অর্ডার পাঠান</a>
+      </div>
       <button class="confirm-btn" onclick="closeOrderModal()">ঠিক আছে</button>
     </div>
   </div>
@@ -1398,8 +1395,6 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     el('order-success-view').style.display = 'none';
     setProofTab('trxid');
     el('om-trxid').value = '';
-    var fileInput = el('om-screenshot');
-    if(fileInput) fileInput.value = '';
 
     try {
       var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
@@ -1433,23 +1428,33 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
 
   window.addEventListener('popstate', function(){ closeOrderModalUI(); });
 
-  window.setProofTab = function(type){
-    proofType = type;
-    el('tab-trxid').classList.toggle('active', type === 'trxid');
-    el('tab-ss').classList.toggle('active', type === 'ss');
-    el('panel-trxid').classList.toggle('active', type === 'trxid');
-    el('panel-ss').classList.toggle('active', type === 'ss');
-  };
+  window.setProofTab = function(type){ proofType = 'trxid'; };
+
+  // Orders are sent to this private Cloudflare Worker, which forwards them to Telegram.
+  var ORDER_ENDPOINT = 'https://jolly-morning-ee94.sirazul438.workers.dev/';
+
+  function showOrderResult(orderId, reached, waUrl){
+    var btn = document.querySelector('#order-form-view .confirm-btn');
+    if(btn){ btn.disabled = false; btn.textContent = 'অর্ডার কনফার্ম করুন'; }
+    el('om-order-id').textContent = orderId;
+    el('order-form-view').style.display = 'none';
+    el('order-success-view').style.display = 'block';
+    el('om-ok-icon').textContent = reached ? '✅' : '📲';
+    el('om-ok-title').textContent = reached ? 'অর্ডার পাঠানো হয়েছে!' : 'শেষ ধাপ: WhatsApp-এ পাঠান';
+    el('om-ok-msg').textContent = reached
+      ? 'আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। ধন্যবাদ!'
+      : 'নেটওয়ার্ক সমস্যায় অর্ডার আমাদের কাছে পৌঁছায়নি। নিচের বাটনে চাপ দিয়ে WhatsApp-এ পাঠিয়ে দিন — তাহলেই অর্ডার কনফার্ম হবে।';
+    el('om-wa-link').href = waUrl;
+    el('om-wa-box').style.display = reached ? 'none' : 'block';
+    if(!reached){ try{ window.open(waUrl, '_blank'); }catch(e){} }
+  }
 
   window.submitOrder = function(){
     var name = el('om-name').value.trim();
     var phone = el('om-phone').value.trim();
     var address = el('om-address').value.trim();
     var trxid = el('om-trxid').value.trim();
-    var fileInput = el('om-screenshot');
-    var hasScreenshot = fileInput && fileInput.files && fileInput.files.length > 0;
-
-    var proofOk = (proofType === 'trxid' && trxid.length > 0) || (proofType === 'ss' && hasScreenshot);
+    var proofOk = trxid.length > 0;
 
     if(!name || !phone || !address || !proofOk){
       el('om-error').style.display = 'block';
@@ -1465,16 +1470,14 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     }
 
     var orderId = 'KTB' + Date.now().toString().slice(-8);
-    var proofLine = proofType === 'trxid'
-      ? ('TrxID: ' + trxid)
-      : ('Payment proof: স্ক্রিনশট (এই চ্যাটে অ্যাটাচ করে দিন)');
+    var proofLine = 'TrxID: ' + trxid;
 
     try {
       var orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
       orders.push({
         id: orderId, product: currentProduct.name, price: currentProduct.price,
         name: name, phone: phone, address: address,
-        proofType: proofType, trxid: proofType === 'trxid' ? trxid : '',
+        proofType: 'trxid', trxid: trxid,
         date: new Date().toISOString()
       });
       localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
@@ -1489,25 +1492,19 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
       proofLine
     ];
 
-    // Instant, automatic notification via Telegram (no tap needed from customer)
-    var TELEGRAM_BOT_TOKEN = '8852050936:AAFy7nMwQ8vvU1bTwRJ8udURvuBWvpW6E4M';
-    var TELEGRAM_CHAT_IDS = ['6872998217', '8620177255'];
-    try {
-      TELEGRAM_CHAT_IDS.forEach(function(chatId){
-        fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: chatId, text: msgLines.join('\n') })
-        }).catch(function(e){ console.warn('Telegram notify failed:', e); });
-      });
-    } catch(e){}
+    var waUrl = 'https://wa.me/8801786555387?text=' + encodeURIComponent(msgLines.join('\n'));
+    var subBtn = document.querySelector('#order-form-view .confirm-btn');
+    if(subBtn){ subBtn.disabled = true; subBtn.textContent = 'পাঠানো হচ্ছে...'; }
 
-    var waText = encodeURIComponent(msgLines.join('\n'));
-    var waUrl = 'https://wa.me/8801786555387?text=' + waText; // kept for future use if needed
-
-    el('om-order-id').textContent = orderId;
-    el('order-form-view').style.display = 'none';
-    el('order-success-view').style.display = 'block';
+    // Instant Telegram alert goes through your private Cloudflare Worker (ORDER_ENDPOINT above).
+    // If it is empty or fails, the customer is sent to WhatsApp instead, so no order is lost.
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 8000);
+    var send = ORDER_ENDPOINT
+      ? fetch(ORDER_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ text: msgLines.join('\n') }), signal: ctrl ? ctrl.signal : undefined }).then(function(r){ return r.ok; })
+      : Promise.resolve(false);
+    send.catch(function(e){ console.warn('Order alert failed:', e); return false; })
+        .then(function(ok){ clearTimeout(timer); showOrderResult(orderId, ok, waUrl); });
   };
 })();
 </script>
@@ -1664,7 +1661,6 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   refresh();
 })();
 </script>
-<script>
 <script>
 function goToAppDownload(e){
   if(e) e.preventDefault();
