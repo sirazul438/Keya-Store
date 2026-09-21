@@ -301,6 +301,17 @@ nav ul a:hover{color:var(--pink);}
 .photo-card .prod-img{width:100%; height:220px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
 .photo-card .prod-img:hover, .photo-card .prod-img.zoomed{transform:scale(1.08);}
 
+.delivery-banner{
+  background:linear-gradient(90deg,#123B36,#1F7A6C);
+  color:#fff; padding:12px 0;
+}
+.delivery-banner .db-row{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px 28px;
+  font-size:0.85rem; text-align:center;
+}
+.delivery-banner .db-item b{color:#8DEBD4;}
+@media(max-width:640px){ .delivery-banner .db-row{flex-direction:column; gap:4px;} }
+
 #lightbox-overlay{
   position:fixed; inset:0; background:rgba(10,10,15,0.94);
   display:flex; align-items:center; justify-content:center;
@@ -410,6 +421,11 @@ footer strong{color:#fff;}
 }
 .order-modal textarea{resize:vertical; min-height:60px;}
 .order-modal .remember-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:0.85rem; color:var(--grey);}
+.order-modal .delivery-options{
+  background:#EFF7F5; border-radius:14px; padding:14px 16px; margin-top:18px; font-size:0.85rem;
+}
+.order-modal .delivery-options b{color:var(--teal-deep);}
+.order-modal .delivery-options .do-row{margin-top:8px; line-height:1.4;}
 .order-modal .bkash-box{
   background:#FFF1E6; border-radius:14px; padding:14px 16px; margin-top:18px; font-size:0.88rem;
 }
@@ -589,6 +605,13 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
     </div>
   </div>
 </section>
+
+<div class="delivery-banner">
+  <div class="wrap db-row">
+    <div class="db-item">🚚 <b>ক্যাশ অন ডেলিভারি:</b> মাত্র ৳150 অগ্রিম, বাকি টাকা হাতে পেয়ে দিন</div>
+    <div class="db-item">⚡ <b>দ্রুত ডেলিভারি (24–48 ঘন্টা):</b> সম্পূর্ণ টাকা অগ্রিম পেমেন্টে</div>
+  </div>
+</div>
 
 <section class="section jewellery" id="jewellery">
   <div class="wrap">
@@ -1111,6 +1134,12 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
       <div class="remember-row">
         <input type="checkbox" id="om-remember">
         <label for="om-remember" style="margin:0; font-weight:500;">পরের বার আমার তথ্য মনে রাখুন (Save my details)</label>
+      </div>
+
+      <div class="delivery-options">
+        <b>ডেলিভারি ও পেমেন্ট অপশন:</b>
+        <div class="do-row">🚚 <b>ক্যাশ অন ডেলিভারি:</b> মাত্র ৳150 অগ্রিম পেমেন্ট, বাকি টাকা প্রোডাক্ট হাতে পেয়ে দিন।</div>
+        <div class="do-row">⚡ <b>দ্রুত ডেলিভারি (24–48 ঘন্টা):</b> সম্পূর্ণ টাকা অগ্রিম পেমেন্ট করলে 24–48 ঘন্টার মধ্যে ডেলিভারি।</div>
       </div>
 
       <div class="bkash-box">
