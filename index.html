@@ -1137,7 +1137,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
       <div class="ok-icon">✅</div>
       <h3>অর্ডার পাঠানো হয়েছে!</h3>
       <p>আপনার অর্ডার আইডি: <b id="om-order-id"></b></p>
-      <p>WhatsApp খুলছে — বার্তাটি পাঠিয়ে দিন। স্ক্রিনশট দিয়ে থাকলে চ্যাটে সেটি অ্যাটাচ করে দিন।</p>
+      <p>আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব। ধন্যবাদ!</p>
       <button class="confirm-btn" onclick="closeOrderModal()">ঠিক আছে</button>
     </div>
   </div>
@@ -1432,13 +1432,11 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     } catch(e){}
 
     var waText = encodeURIComponent(msgLines.join('\n'));
-    var waUrl = 'https://wa.me/8801786555387?text=' + waText;
+    var waUrl = 'https://wa.me/8801786555387?text=' + waText; // kept for future use if needed
 
     el('om-order-id').textContent = orderId;
     el('order-form-view').style.display = 'none';
     el('order-success-view').style.display = 'block';
-
-    window.open(waUrl, '_blank');
   };
 })();
 </script>
