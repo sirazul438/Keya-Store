@@ -377,6 +377,16 @@ nav ul a:hover{color:var(--pink);}
 
 /* CONTACT */
 .contact{background:var(--cream);}
+.app-download-box{
+  margin-top:40px; background:var(--navy); border-radius:20px; padding:28px 26px;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap; color:#fff;
+}
+.app-download-box .adb-icon{font-size:2.4rem; flex:none;}
+.app-download-box .adb-text{flex:1; min-width:220px;}
+.app-download-box .adb-text h3{font-size:1.05rem; margin-bottom:4px;}
+.app-download-box .adb-text p{font-size:0.85rem; color:#B7BDD1;}
+.app-download-box .btn{flex:none;}
+@media(max-width:600px){ .app-download-box{flex-direction:column; text-align:center;} }
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
 .contact-item{display:flex; gap:14px; align-items:flex-start; margin-bottom:22px;}
 .contact-item .ic{
@@ -1113,6 +1123,15 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
       <a class="btn btn-teal" href="tel:+8801786555387">দোকানে ফোন করুন</a>
       <a class="btn btn-outline" style="border-color:#fff; color:#fff; margin-top:10px;" href="https://wa.me/8801786555387" target="_blank" rel="noopener">WhatsApp-এ মেসেজ করুন</a>
     </div>
+  </div>
+
+  <div class="wrap app-download-box">
+    <div class="adb-icon">📱</div>
+    <div class="adb-text">
+      <h3>Keya Tech & Boutique অ্যাপ ইনস্টল করুন</h3>
+      <p>Android ফোনে সরাসরি অ্যাপ হিসেবে ব্যবহার করুন — দ্রুত লোড, এবং হোম স্ক্রিনে শর্টকাট।</p>
+    </div>
+    <a class="btn btn-pink" href="Keya_Store.apk" download>⬇️ APK ডাউনলোড করুন</a>
   </div>
 </section>
 
