@@ -563,11 +563,12 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
 .contact-item:nth-child(even) .ic{background:linear-gradient(135deg,#0E9E8C,#087468);}
 .map-card{box-shadow:0 18px 40px -18px rgba(22,33,62,.35);}
 
-/* hero buttons: 3 equal buttons in one row (desktop + mobile) */
-.hero-ctas{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:460px; flex-wrap:nowrap;}
-.hero-ctas .btn{padding:13px 6px; text-align:center; white-space:nowrap; font-size:.92rem; min-width:0;}
+/* hero buttons: 4 equal buttons in one row (desktop + mobile) */
+.hero-ctas{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:520px; flex-wrap:nowrap;}
+.hero-ctas .btn{padding:11px 4px; text-align:center; white-space:nowrap; font-size:.82rem; min-width:0;}
 .btn-navy{background:linear-gradient(135deg,#2B3A6B,#0B1330); color:#fff; box-shadow:0 12px 22px -10px rgba(22,33,62,.45);}
-@media(max-width:400px){ .hero-ctas{gap:8px;} .hero-ctas .btn{font-size:.82rem; padding:12px 4px;} }
+.btn-purple{background:linear-gradient(135deg,#8B5CF6,#5B21B6); color:#fff; box-shadow:0 12px 22px -10px rgba(91,33,182,.45);}
+@media(max-width:400px){ .hero-ctas{gap:6px;} .hero-ctas .btn{font-size:.72rem; padding:10px 2px;} }
 </style>
 </head>
 <body id="top">
@@ -600,6 +601,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:3px
       <div class="hero-ctas">
         <a class="btn btn-pink" href="#boutique">Boutique</a>
         <a class="btn btn-teal" href="#tech">Tech</a>
+        <a class="btn btn-purple" href="Keya_Store.apk" download>App</a>
         <a class="btn btn-navy" href="#contact">Contact</a>
       </div>
     </div>
