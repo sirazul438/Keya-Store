@@ -1417,6 +1417,18 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
       'ঠিকানা: ' + address,
       proofLine
     ];
+
+    // Instant, automatic notification via Telegram (no tap needed from customer)
+    var TELEGRAM_BOT_TOKEN = '8852050936:AAFy7nMwQ8vvU1bTwRJ8udURvuBWvpW6E4M';
+    var TELEGRAM_CHAT_ID = '6872998217';
+    try {
+      fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msgLines.join('\n') })
+      }).catch(function(e){ console.warn('Telegram notify failed:', e); });
+    } catch(e){}
+
     var waText = encodeURIComponent(msgLines.join('\n'));
     var waUrl = 'https://wa.me/8801786555387?text=' + waText;
 
