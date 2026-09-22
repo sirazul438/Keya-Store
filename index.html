@@ -551,7 +551,7 @@ nav ul{gap:18px;}
   font:700 .74rem 'Plus Jakarta Sans',sans-serif; color:var(--navy); text-decoration:none;
 }
 .qn-cat-wrap{border-left:1px solid var(--line);}
-#qn-saved-btn{border-left:1px solid var(--line);}
+#qn-contact-btn{border-left:1px solid var(--line);}
 .qn-btn svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
 .qn-btn:hover, .qn-btn:active{color:var(--pink-deep);}
 .qn-btn .badge{display:none; min-width:15px; height:15px; padding:0 4px; border-radius:8px; background:var(--pink); color:#fff; font-size:.6rem; align-items:center; justify-content:center; margin-left:1px;}
@@ -682,6 +682,8 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
           <li><a href="#tech">🎧 Tech</a></li>
           <li><a href="#watches">⌚ Watches</a></li>
           <li><a href="#handbags">👜 Handbags</a></li>
+          <li><a href="#app-download" onclick="goToAppDownload(event)">📱 App</a></li>
+          <li><a href="#contact">☎️ যোগাযোগ (Contact)</a></li>
         </ul>
       </li>
       <li><a href="#app-download" onclick="goToAppDownload(event)">App</a></li>
@@ -712,13 +714,14 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
         <a href="#tech">🎧 Tech</a>
         <a href="#watches">⌚ Watches</a>
         <a href="#handbags">👜 Handbags</a>
+        <a href="#app-download" onclick="goToAppDownload(event)">📱 App</a>
+        <a href="#contact">☎️ যোগাযোগ (Contact)</a>
       </div>
     </div>
-    <button type="button" class="qn-btn" id="qn-saved-btn">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
-      <span>Saved</span>
-      <span class="badge" id="qn-saved-badge"></span>
-    </button>
+    <a href="#contact" class="qn-btn" id="qn-contact-btn">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <span>Contact</span>
+    </a>
   </div>
 </nav>
 
@@ -1680,7 +1683,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
     });
     ids.forEach(function(id){ if($(id)) n++; });
     $('nav-badge').textContent = n; $('nav-badge').classList.toggle('show', n > 0);
-    ['nav-saved-badge', 'qn-saved-badge'].forEach(function(id){
+    ['nav-saved-badge'].forEach(function(id){
       var b = $(id); if(!b) return;
       b.textContent = n; b.classList.toggle('show', n > 0);
     });
@@ -1768,7 +1771,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   }
 
   $('nav-login').onclick = function(){ me() ? openDrawer() : openLogin('login'); };
-  ['nav-saved-btn', 'qn-saved-btn'].forEach(function(id){
+  ['nav-saved-btn'].forEach(function(id){
     var b = $(id); if(!b) return;
     b.onclick = function(){ me() ? openDrawer() : openLogin('login', 'Login করলে আপনার পছন্দের প্রোডাক্ট সেভ থাকবে।'); };
   });
