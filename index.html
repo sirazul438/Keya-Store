@@ -338,7 +338,7 @@ nav ul a:hover{color:var(--pink);}
 
 /* BOUTIQUE */
 .photo-card{padding:0; overflow:hidden;}
-.photo-card .prod-img{width:100%; height:280px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
+.photo-card .prod-img{width:100%; height:220px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
 .photo-card .prod-img:hover, .photo-card .prod-img.zoomed{transform:scale(1.08);}
 
 .delivery-banner{
@@ -382,27 +382,28 @@ nav ul a:hover{color:var(--pink);}
 .photo-card .more-details{padding:0 20px; margin:0 0 12px;}
 
 .boutique{background:linear-gradient(160deg,#FFE9DA 0%,#FFF3E9 45%,#FFEDF6 100%);}
-.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:28px;}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
 
 @media(max-width:640px){
-  .grid{grid-template-columns:repeat(2,1fr); gap:14px;}
-  .photo-card .prod-img{height:180px;}
-  .photo-card h3, .photo-card .desc, .photo-card .price{padding-left:12px; padding-right:12px;}
-  .photo-card h3{margin-top:10px; font-size:0.95rem;}
-  .photo-card .desc{font-size:0.78rem; line-height:1.35;}
-  .photo-card .price{font-size:0.95rem; padding-bottom:14px;}
+  .wrap{padding:0 12px;}
+  .grid{grid-template-columns:repeat(2,1fr); gap:10px;}
+  .photo-card .prod-img{height:auto; aspect-ratio:1/1;}
+  .photo-card h3, .photo-card .desc, .photo-card .price{padding-left:14px; padding-right:14px;}
+  .photo-card h3{margin-top:12px; font-size:1rem;}
+  .photo-card .desc{font-size:0.85rem; line-height:1.4;}
+  .photo-card .price{font-size:1rem; padding-bottom:14px;}
   .save-btn{width:32px; height:32px;}
   .save-btn svg{width:16px; height:16px;}
-  .photo-card .more-details{padding:0 12px; margin:0 0 8px;}
-  .swatches{padding:0 12px 10px; gap:5px;}
-  .swatches img{width:24px; height:24px;}
+  .photo-card .more-details{padding:0 14px; margin:0 0 8px;}
+  .swatches{padding:0 14px 10px; gap:6px;}
+  .swatches img{width:26px; height:26px;}
   .more-link{font-size:0.72rem;}
   .card .icon{font-size:1.7rem; margin-bottom:8px;}
   .card h3{font-size:0.95rem; margin-bottom:3px;}
   .card .desc{font-size:0.78rem; margin-bottom:8px; min-height:auto;}
   .card .price{font-size:0.95rem;}
-  .order-btn{padding:9px 0; font-size:0.78rem; margin-top:8px;}
-  .photo-card .order-btn{margin-left:12px; margin-right:12px; margin-bottom:12px;}
+  .order-btn{padding:10px 0; font-size:0.82rem; margin-top:8px;}
+  .photo-card .order-btn{margin-left:14px; margin-right:14px; margin-bottom:14px;}
   .card:not(.photo-card){padding:14px;}
   .card{border-radius:16px;}
   .soon-ribbon{font-size:0.68rem; padding:4px 9px;}
