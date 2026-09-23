@@ -46,7 +46,7 @@
   "url": "https://sirazul438.github.io/Keya-Store/",
   "image": "https://sirazul438.github.io/Keya-Store/og-image.jpg",
   "telephone": "+8801786555387",
-  "priceRange": "৳500 - ৳2000",
+  "priceRange": "৳৫০০ - ৳২০০০",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "BoroHorishpur, Bus Terminal",
@@ -887,7 +887,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
 
 <div class="delivery-banner">
   <div class="wrap db-row">
-    <div class="db-item">🚚 অর্ডার কনফার্ম করতে <b>bKash/Nagad-এ ৳150 ডেলিভারি চার্জ</b> দিন — বাকি টাকা <b>ক্যাশ অন ডেলিভারি</b></div>
+    <div class="db-item">🚚 অর্ডার কনফার্ম করতে <b>bKash/Nagad-এ ৳১০০ ডেলিভারি চার্জ</b> দিন — বাকি টাকা <b>ক্যাশ অন ডেলিভারি</b></div>
   </div>
 </div>
 
@@ -1416,7 +1416,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
     <button class="close-x" onclick="closeOrderModal()" aria-label="Close">✕</button>
     <div id="order-form-view">
       <h3 id="om-product-name">Product</h3>
-      <div class="om-price" id="om-product-price">৳0</div>
+      <div class="om-price" id="om-product-price">৳০</div>
 
       <label for="om-name">নাম (Name) *</label>
       <input type="text" id="om-name" placeholder="আপনার নাম লিখুন">
@@ -1434,7 +1434,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
 
       <div class="delivery-options">
         <b>ডেলিভারি ও পেমেন্ট অপশন:</b>
-        <div class="do-row">🚚 অর্ডার কনফার্ম করতে <b>bKash/Nagad-এ ৳150 ডেলিভারি চার্জ</b> পাঠান। প্রোডাক্টের বাকি দাম <b>ক্যাশ অন ডেলিভারি</b> — অর্থাৎ প্রোডাক্ট হাতে পেয়ে তখন দেবেন।</div>
+        <div class="do-row">🚚 অর্ডার কনফার্ম করতে <b>bKash/Nagad-এ ৳১০০ ডেলিভারি চার্জ</b> পাঠান। প্রোডাক্টের বাকি দাম <b>ক্যাশ অন ডেলিভারি</b> — অর্থাৎ প্রোডাক্ট হাতে পেয়ে তখন দেবেন।</div>
       </div>
 
       <div class="bkash-box">
@@ -1637,11 +1637,14 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   var proofType = 'trxid';
 
   function el(id){ return document.getElementById(id); }
+  function toBanglaDigits(value){
+    return String(value).replace(/[0-9]/g, function(d){ return '০১২৩৪৫৬৭৮৯'.charAt(Number(d)); });
+  }
 
   window.openOrderModal = function(name, price){
     currentProduct = { name: name, price: price };
     el('om-product-name').textContent = name;
-    el('om-product-price').textContent = '৳' + price;
+    el('om-product-price').textContent = '৳' + toBanglaDigits(price);
     el('om-error').style.display = 'none';
     el('order-form-view').style.display = 'block';
     el('order-success-view').style.display = 'none';
@@ -1737,7 +1740,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
 
     var msgLines = [
       'নতুন অর্ডার! Order ID: ' + orderId,
-      'Product: ' + currentProduct.name + ' - ৳' + currentProduct.price,
+      'Product: ' + currentProduct.name + ' - ৳' + toBanglaDigits(currentProduct.price),
       'নাম: ' + name,
       'ফোন: ' + phone,
       'ঠিকানা: ' + address,
@@ -1770,6 +1773,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   function $(id){ return document.getElementById(id); }
   function get(k, d){ try{ var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; }catch(e){ return d; } }
   function put(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+  function toBanglaDigits(value){
+    return String(value).replace(/[0-9]/g, function(d){ return '০১২৩৪৫৬৭৮৯'.charAt(Number(d)); });
+  }
   function me(){ var p = get(S, null), u = get(U, {}); return p && u[p] ? {phone:p, u:u[p]} : null; }
   function saved(){ var m = me(); return m ? (m.u.saved || []) : []; }
   function toast(t){ var e = $('acct-toast'); e.textContent = t; e.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ e.classList.remove('show'); }, 2200); }
@@ -1801,6 +1807,11 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
       var wrap = document.createElement('div');
       wrap.className = 'price-text';
       while(priceEl.firstChild){ wrap.appendChild(priceEl.firstChild); }
+      Array.prototype.forEach.call(wrap.childNodes, function(node){
+        if(node.nodeType === 3) node.nodeValue = toBanglaDigits(node.nodeValue);
+      });
+      var priceLabel = wrap.querySelector('span');
+      if(priceLabel) priceLabel.textContent = 'মাত্র';
       priceEl.appendChild(wrap);
       priceEl.appendChild(b);
     } else {
