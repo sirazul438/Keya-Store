@@ -1572,6 +1572,10 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   if(!box) return;
   var tiles = Array.prototype.slice.call(box.querySelectorAll('.tile'));
   tiles.forEach(function(t){
+    var image = t.querySelector('img');
+    if(image){ image.loading = 'eager'; image.decoding = 'sync'; image.fetchPriority = 'high'; }
+  });
+  tiles.forEach(function(t){
     t.addEventListener('click', function(){ goTo(t.dataset.target); });
     t.addEventListener('keydown', function(e){
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); goTo(t.dataset.target); }
