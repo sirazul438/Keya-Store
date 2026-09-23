@@ -384,6 +384,77 @@ nav ul a:hover{color:var(--pink);}
 .boutique{background:linear-gradient(160deg,#FFE9DA 0%,#FFF3E9 45%,#FFEDF6 100%);}
 .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
 
+@media (max-width: 767px){
+  .card{
+    padding: 12px 12px 10px;
+    border-radius: 16px;
+  }
+  .card:not(.photo-card){
+    padding: 12px;
+  }
+  .photo-card{
+    padding: 0 0 10px;
+  }
+  .photo-card .prod-img{
+    width: calc(100% - 12px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 6px auto 0;
+    display: block;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    object-fit: cover;
+    box-sizing: border-box;
+    background: #f8f8f8;
+  }
+  .photo-card h3,
+  .photo-card .desc,
+  .photo-card .price,
+  .photo-card .more-details,
+  .swatches{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .photo-card h3{
+    margin-top: 10px;
+    margin-bottom: 4px;
+    font-size: 0.98rem;
+  }
+  .photo-card .desc{
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  .photo-card .price{
+    padding-bottom: 10px;
+    gap: 8px;
+  }
+  .photo-card .more-details{
+    margin: 0 0 8px;
+    padding-top: 0;
+  }
+  .swatches{
+    padding-bottom: 8px;
+    gap: 6px;
+  }
+  .swatches img{
+    width: 26px;
+    height: 26px;
+  }
+  .order-btn{
+    margin-top: 6px;
+    padding: 10px 0;
+    font-size: 0.82rem;
+  }
+  .photo-card .order-btn{
+    margin: 0 12px 10px;
+  }
+  .card .desc{margin-bottom:8px; min-height:auto;}
+  .card .price{font-size:0.95rem;}
+  .save-btn{width:32px; height:32px;}
+  .save-btn svg{width:16px; height:16px;}
+}
+
 @media(max-width:640px){
   .wrap{padding:0 12px;}
   .grid{grid-template-columns:repeat(2,1fr); gap:10px;}
