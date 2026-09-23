@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keya Tech & Boutique | নাটোরের থ্রি-পিস, Handbag আর Tech Gadgets-এর দোকান</title>
 <meta name="description" content="নাটোরের Keya Tech & Boutique-এ পাবেন মেয়েদের থ্রি-পিস, ওয়াচ, Handbag আর Tech Gadgets — Earbuds, Headphones, Powerbank সহ আরও অনেক কিছু। দোকানে আসুন, নয়তো Facebook page-এ মেসেজ করুন।">
@@ -166,7 +166,7 @@ nav ul a:hover{color:var(--pink);}
 .hero-grid-compact{display:grid; grid-template-columns:1fr; gap:22px; align-items:center;}
 .hero-compact .wrap.hero-grid-compact{max-width:1100px;}
 .hero-grid-compact h1{font-size:clamp(1.15rem,2.4vw,1.75rem); line-height:1.3;}
-.hero-grid-compact .lead{font-size:0.85rem; margin-top:10px; max-width:36ch;}
+.hero-grid-compact .lead{font-size:0.75rem; margin-top:10px; max-width:36ch;}
 .hero-location{
   display:inline-flex; align-items:center; gap:6px; margin-top:12px;
   padding:8px 14px; border-radius:999px; background:rgba(140,53,71,0.08);
@@ -187,7 +187,7 @@ nav ul a:hover{color:var(--pink);}
 .tile:focus-visible{outline:3px solid var(--pink); outline-offset:2px;}
 .tile:hover{box-shadow:0 12px 26px rgba(22,33,62,0.22);}
 @media(min-width:801px){
-  .hero-grid-compact .lead{font-size:0.92rem; max-width:38ch;}
+  .hero-grid-compact .lead{font-size:0.8rem; max-width:38ch;}
   /* cover images span the full header width, from under Home to under Login */
   .hero-thumbs{flex-direction:row; gap:16px;}
   .trow{flex:1 1 0;}
@@ -206,7 +206,7 @@ nav ul a:hover{color:var(--pink);}
   .tile{height:160px;}
   .hero-compact{padding:14px 0 10px;}
   .hero-grid-compact h1{font-size:clamp(1rem,4.5vw,1.3rem);}
-  .hero-grid-compact .lead{font-size:0.72rem; margin-top:6px; max-width:30ch;}
+  .hero-grid-compact .lead{font-size:0.65rem; margin-top:6px; max-width:30ch;}
   .hero-location{font-size:0.7rem; padding:6px 12px; margin-top:8px;}
 }
 .section.categories-compact{padding:14px 0 16px; background:#fff;}
@@ -338,7 +338,7 @@ nav ul a:hover{color:var(--pink);}
 
 /* BOUTIQUE */
 .photo-card{padding:0; overflow:hidden;}
-.photo-card .prod-img{width:100%; height:220px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
+.photo-card .prod-img{width:100%; height:280px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
 .photo-card .prod-img:hover, .photo-card .prod-img.zoomed{transform:scale(1.08);}
 
 .delivery-banner{
@@ -378,19 +378,21 @@ nav ul a:hover{color:var(--pink);}
 .swatches{display:flex; gap:8px; padding:0 20px 14px;}
 .swatches img{width:38px; height:38px; border-radius:8px; object-fit:cover; cursor:pointer; border:2px solid transparent; opacity:0.7;}
 .swatches img.active{border-color:var(--pink); opacity:1;}
-.photo-card .price{padding-bottom:22px;}
+.photo-card .price{padding-bottom:22px; display:flex; align-items:center; justify-content:space-between; gap:10px;}
 .photo-card .more-details{padding:0 20px; margin:0 0 12px;}
 
 .boutique{background:linear-gradient(160deg,#FFE9DA 0%,#FFF3E9 45%,#FFEDF6 100%);}
-.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:28px;}
 
 @media(max-width:640px){
-  .grid{grid-template-columns:repeat(2,1fr); gap:12px;}
-  .photo-card .prod-img{height:140px;}
+  .grid{grid-template-columns:repeat(2,1fr); gap:14px;}
+  .photo-card .prod-img{height:180px;}
   .photo-card h3, .photo-card .desc, .photo-card .price{padding-left:12px; padding-right:12px;}
   .photo-card h3{margin-top:10px; font-size:0.95rem;}
   .photo-card .desc{font-size:0.78rem; line-height:1.35;}
   .photo-card .price{font-size:0.95rem; padding-bottom:14px;}
+  .save-btn{width:32px; height:32px;}
+  .save-btn svg{width:16px; height:16px;}
   .photo-card .more-details{padding:0 12px; margin:0 0 8px;}
   .swatches{padding:0 12px 10px; gap:5px;}
   .swatches img{width:24px; height:24px;}
@@ -578,8 +580,8 @@ nav ul{gap:18px;}
 #nav-saved-btn svg{width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
 @media(max-width:1024px){ #nav-saved-btn{display:none;} }
 .card{position:relative;}
-.save-btn{position:absolute; top:28px; right:28px; z-index:4; width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,.94); box-shadow:0 6px 14px rgba(0,0,0,.22); cursor:pointer; display:grid; place-items:center; color:var(--navy); transition:transform .15s ease,color .15s ease;}
-.save-btn svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2;}
+.save-btn{position:static; flex:none; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:#fff; box-shadow:0 4px 10px rgba(0,0,0,.10); cursor:pointer; display:grid; place-items:center; color:var(--navy); transition:transform .15s ease,color .15s ease;}
+.save-btn svg{width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:2;}
 .save-btn:hover{transform:scale(1.08);}
 .save-btn[aria-pressed=true]{color:var(--pink);}
 .save-btn[aria-pressed=true] svg{fill:currentColor;}
@@ -678,7 +680,8 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
 /* ============================================================
    DARK MODE — follows the visitor's system/browser theme automatically
    ============================================================ */
-@media (prefers-color-scheme: dark){
+/* Dark theme temporarily disabled — change "not screen" back to "prefers-color-scheme: dark" to re-enable */
+@media not screen and (prefers-color-scheme: dark){
   :root{
     --cream:#15120F;
     --sand:#221B15;
@@ -1739,12 +1742,20 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   /* ---- heart button on every product card ---- */
   Array.prototype.forEach.call(document.querySelectorAll('.card'), function(c){
     if(!c.id || !c.querySelector('.prod-img')) return;
-    var b = document.createElement('button'), h = c.querySelector('h3');
+    var b = document.createElement('button'), h = c.querySelector('h3'), priceEl = c.querySelector('.price');
     b.type = 'button'; b.className = 'save-btn'; b.setAttribute('aria-pressed', 'false');
     b.setAttribute('aria-label', 'Save: ' + (h ? h.textContent : c.id));
     b.innerHTML = HEART;
     b.onclick = function(e){ e.stopPropagation(); toggle(c.id); };
-    c.appendChild(b);
+    if(priceEl){
+      var wrap = document.createElement('div');
+      wrap.className = 'price-text';
+      while(priceEl.firstChild){ wrap.appendChild(priceEl.firstChild); }
+      priceEl.appendChild(wrap);
+      priceEl.appendChild(b);
+    } else {
+      c.appendChild(b);
+    }
   });
 
   function setSaved(list){
