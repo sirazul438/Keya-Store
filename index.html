@@ -385,101 +385,34 @@ nav ul a:hover{color:var(--pink);}
 .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
 
 @media (max-width: 767px) {
-  .card {
-    padding: 4px 2px;
-    border-radius: 12px;
-    box-sizing: border-box;
+  /* Tightens inner padding of the product card */
+  .card, .product-card {
+    padding: 10px 8px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .photo-card {
-    padding: 2px 0 6px;
+  /* Reduces gap under the image */
+  .card img, .product-card img {
+    margin-bottom: 6px !important;
   }
 
-  /* Product image with 3:2 aspect ratio spanning 99% width */
-  .photo-card .prod-img {
-    width: 99%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    margin: 0 auto;
-    display: block;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    object-fit: cover;
-    box-sizing: border-box;
-    background: #f8f8f8;
+  /* Tightens spacing between titles and descriptions */
+  .card h3, .card h4, .product-card h3 {
+    margin: 4px 0 !important;
+    font-size: 15px !important;
   }
 
-  /* Extremely tight 1% padding to eliminate virtually all side whitespace */
-  .photo-card h3,
-  .photo-card .desc,
-  .photo-card .price,
-  .photo-card .more-details,
-  .swatches {
-    padding-left: 1%;
-    padding-right: 1%;
-    box-sizing: border-box;
+  .card p, .product-card p {
+    margin: 2px 0 6px 0 !important;
+    font-size: 12px !important;
   }
 
-  .photo-card h3 {
-    margin-top: 6px;
-    margin-bottom: 2px;
-    font-size: 0.95rem;
-    position: relative;
-    clear: both;
-  }
-
-  .photo-card .desc {
-    margin-bottom: 4px;
-    font-size: 0.8rem;
-    line-height: 1.3;
-    min-height: auto;
-    position: relative;
-    clear: both;
-  }
-
-  .photo-card .price {
-    padding-bottom: 6px;
-    gap: 6px;
-    font-size: 0.92rem;
-    position: relative;
-    clear: both;
-  }
-
-  .photo-card .more-details {
-    margin: 0 0 4px;
-    padding-top: 0;
-  }
-
-  .swatches {
-    padding-bottom: 6px;
-    gap: 4px;
-  }
-
-  .swatches img {
-    width: 24px;
-    height: 24px;
-  }
-
-  /* Compact button fitting 99% width */
-  .order-btn {
-    padding: 8px 0;
-    font-size: 0.82rem;
-  }
-
-  .photo-card .order-btn {
-    width: 99%;
-    margin: 4px auto 6px;
-    display: block;
-  }
-
-  .save-btn {
-    width: 30px;
-    height: 30px;
-  }
-
-  .save-btn svg {
-    width: 14px;
-    height: 14px;
+  /* Compact order button spacing */
+  .card button, .product-card button, .card a.btn {
+    margin-top: 6px !important;
+    padding: 6px 14px !important;
   }
 }
 
