@@ -338,7 +338,7 @@ nav ul a:hover{color:var(--pink);}
 
 /* BOUTIQUE */
 .photo-card{padding:0; overflow:hidden;}
-.photo-card .prod-img{width:100%; height:220px; object-fit:cover; display:block; transition:transform .3s ease; cursor:pointer;}
+.photo-card .prod-img{width:100%; height:auto; aspect-ratio:2 / 3; object-fit:cover; display:block; border-radius:12px; transition:transform .3s ease; cursor:pointer;}
 .photo-card .prod-img:hover, .photo-card .prod-img.zoomed{transform:scale(1.08);}
 
 .delivery-banner{
@@ -383,7 +383,7 @@ nav ul a:hover{color:var(--pink);}
 
 .boutique{background:linear-gradient(160deg,#FFE9DA 0%,#FFF3E9 45%,#FFEDF6 100%);}
 .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
-.grid .card, .grid .card .prod-img{border-radius:0;}
+.grid .card, .grid .card .prod-img{border-radius:12px;}
 
 @media (max-width: 767px) {
   /* Tightens inner padding of the product card */
@@ -420,7 +420,7 @@ nav ul a:hover{color:var(--pink);}
 @media(max-width:640px){
   .wrap{padding:0 12px;}
   .grid{grid-template-columns:repeat(2,1fr); gap:10px;}
-  .photo-card .prod-img{height:auto; aspect-ratio:1/1;}
+  .photo-card .prod-img{height:auto; aspect-ratio:2 / 3;}
   .photo-card h3, .photo-card .desc, .photo-card .price{padding-left:14px; padding-right:14px;}
   .photo-card h3{margin-top:12px; font-size:1rem;}
   .photo-card .desc{font-size:0.85rem; line-height:1.4;}
