@@ -746,6 +746,64 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
   .order-modal .err-msg{color:#FF7A7A;}
   ::placeholder{color:#8A8177;}
 }
+
+/* ===== Full-site white/black theme override so products pop ===== */
+body, .hero-compact, .section.categories-compact, .categories,
+.boutique, .watches, .sarees, .jewellery, .handbags, .tech,
+.contact, header, .quicknav, nav {
+  background: #fff !important;
+  background-image: none !important;
+}
+.boutique .card, .watches .card, .jewellery .card, .sarees .card,
+.handbags .card, .card { background: #fff !important; background-image: none !important; }
+.tech, .tech .card, footer, .strip, .order-modal, .saved-drawer { background: var(--navy) !important; }
+.tech .card { background: rgba(255,255,255,0.05) !important; }
+.blob-pink, .blob-teal { display: none !important; }
+
+@media (prefers-color-scheme: dark) {
+  body, .hero-compact, .section.categories-compact, .categories,
+  .boutique, .watches, .sarees, .jewellery, .handbags,
+  .contact, header, .quicknav, nav {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  .boutique .card, .watches .card, .jewellery .card, .sarees .card,
+  .handbags .card, .card {
+    background: #0a0a0a !important;
+    border-color: #222 !important;
+  }
+  .card h3, nav ul a, .brand, .cat-pill, .hero-location { color: #fff !important; }
+}
+
+/* ===== Product images: fill the frame, minimal surrounding space, never overlap text ===== */
+.card.photo-card {
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.photo-card .prod-img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  transform: none !important;
+  transition: transform .3s ease;
+}
+/* Only zoom on explicit hover/zoom state, and clip it so it can never spill onto the text below */
+.photo-card .prod-img:hover, .photo-card .prod-img.zoomed {
+  transform: scale(1.08) !important;
+}
+.photo-card h3, .photo-card .desc, .photo-card .price, .photo-card .more-details, .photo-card .swatches, .photo-card .order-btn {
+  position: relative !important;
+  z-index: 2 !important;
+  background: inherit !important;
+}
+@media(max-width:640px){
+  .photo-card .prod-img{ height:190px !important; }
+}
 </style>
 </head>
 <body id="top">
