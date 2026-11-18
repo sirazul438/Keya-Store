@@ -825,6 +825,25 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
   .order-modal .err-msg{color:#FF7A7A;}
   ::placeholder{color:#8A8177;}
 }
+
+/* ===== Search + Tech category filter ===== */
+.search-box{position:relative; max-width:560px; margin:0 auto 12px;}
+.search-box input{width:100%; box-sizing:border-box; padding:12px 44px 12px 44px; border-radius:999px; border:1.5px solid var(--line); background:#fff; color:var(--navy); font:inherit; font-size:16px; outline:none; -webkit-appearance:none; appearance:none;}
+.search-box input:focus{border-color:var(--pink); box-shadow:0 0 0 3px rgba(140,53,71,.15);}
+.search-box .si{position:absolute; left:16px; top:50%; transform:translateY(-50%); font-size:16px; pointer-events:none;}
+.search-box button{position:absolute; right:8px; top:50%; transform:translateY(-50%); width:30px; height:30px; border:0; border-radius:50%; background:rgba(0,0,0,.08); color:var(--navy); font-size:14px; cursor:pointer;}
+.search-info{text-align:center; font-size:.9rem; color:var(--grey); margin:-4px 0 10px; min-height:0;}
+.search-info:empty{display:none;}
+.search-info a{color:var(--pink); font-weight:700;}
+.tech-filter{display:flex; gap:8px; overflow-x:auto; padding:2px 2px 14px; margin:0 0 6px; -webkit-overflow-scrolling:touch; scrollbar-width:thin;}
+.tf-chip{flex:0 0 auto; white-space:nowrap; padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); color:#D2D6E2; font:inherit; font-size:.85rem; font-weight:600; cursor:pointer;}
+.tf-chip span{opacity:.65; font-size:.78rem; margin-left:2px;}
+.tf-chip:hover{background:rgba(255,255,255,.16);}
+.tf-chip.active{background:#4FBFAE; border-color:#4FBFAE; color:#0F2A25;}
+.search-box input::-webkit-search-cancel-button{display:none;}
+.is-hidden{display:none !important;}
+body.searching .grid .card.extra, .section.filtering .grid .card.extra{display:flex;}
+body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-filter{display:none;}
 </style>
 <style>
 .card.p45 .prod-img{aspect-ratio:4 / 5 !important}
@@ -849,6 +868,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
           <li><a href="#contact">☎️ যোগাযোগ (Contact)</a></li>
         </ul>
       </li>
+      <li><a href="#search" onclick="return kySearchFocus(event)">🔍 Search</a></li>
       <li><a href="#app-download" onclick="goToAppDownload(event)">App</a></li>
       <li><a href="#contact">যোগাযোগ</a></li>
     </ul>
@@ -873,6 +893,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
       <div class="qn-cat-menu" id="qn-cat-menu">
         <a href="#threepiece">👗 থ্রি-পিস (Boutique)</a>
         <a href="#tech">🎧 Tech</a>
+        <a href="#search" onclick="return kySearchFocus(event)">🔍 Search</a>
         <a href="#app-download" onclick="goToAppDownload(event)">📱 App</a>
         <a href="#contact">☎️ যোগাযোগ (Contact)</a>
       </div>
@@ -900,6 +921,12 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
 
 <section class="section categories categories-compact">
   <div class="wrap">
+    <div class="search-box" id="search">
+      <span class="si" aria-hidden="true">🔍</span>
+      <input id="siteSearch" type="search" placeholder="প্রোডাক্ট খুঁজুন — যেমন: AirPods, JBL, Power bank, থ্রি-পিস" autocomplete="off" enterkeyhint="search" aria-label="প্রোডাক্ট খুঁজুন">
+      <button type="button" id="searchClear" hidden aria-label="মুছুন">✕</button>
+    </div>
+    <div class="search-info" id="searchInfo" aria-live="polite"></div>
     <div class="cat-row">
       <a class="cat-pill cat-pink" href="#threepiece">👗 থ্রি-পিস</a><a class="cat-pill cat-teal" href="#tech">🎧 Tech</a>
       </div>
@@ -1320,848 +1347,849 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
         <p>ফোন আর দৈনন্দিন জীবনের জন্য ভরসাযোগ্য অ্যাকসেসরিজ।</p>
       </div>
     </div>
+    <div class="tech-filter" id="techFilter" role="tablist" aria-label="Tech category"><button type="button" class="tf-chip active" data-cat="all">সব <span>121</span></button><button type="button" class="tf-chip" data-cat="earbuds">🎧 Earbuds & TWS <span>25</span></button><button type="button" class="tf-chip" data-cat="headphone">🎧 Headphones <span>6</span></button><button type="button" class="tf-chip" data-cat="neckband">📿 Neckbands <span>4</span></button><button type="button" class="tf-chip" data-cat="speaker">🔊 Speakers <span>13</span></button><button type="button" class="tf-chip" data-cat="power">🔋 Power Banks & UPS <span>10</span></button><button type="button" class="tf-chip" data-cat="charger">⚡ Chargers <span>3</span></button><button type="button" class="tf-chip" data-cat="watch">⌚ Smart Watches <span>8</span></button><button type="button" class="tf-chip" data-cat="camera">📷 Camera & Mic <span>8</span></button><button type="button" class="tf-chip" data-cat="holder">📱 Holders & Stands <span>4</span></button><button type="button" class="tf-chip" data-cat="fan">🌀 Fans & Coolers <span>7</span></button><button type="button" class="tf-chip" data-cat="light">💡 Lights & Lamps <span>15</span></button><button type="button" class="tf-chip" data-cat="care">✂️ Grooming & Care <span>8</span></button><button type="button" class="tf-chip" data-cat="gaming">🎮 Gaming <span>2</span></button><button type="button" class="tf-chip" data-cat="safety">🛡️ Safety & Lock <span>4</span></button><button type="button" class="tf-chip" data-cat="other">✨ Others <span>4</span></button></div>
     <div class="grid">
-      <div class="card photo-card" id="tech-9">
+      <div class="card photo-card" id="tech-9" data-cat="camera">
         <img class="prod-img" src="images/cd597beac8ef.webp" alt="10 Inch Ring Light Photo Studio Camera" loading="lazy" onclick="openLightbox(this.src)">
         <h3>10 Inch Ring Light Photo Studio Camera</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("10 Inch Ring Light Photo Studio Camera", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-10">
+      <div class="card photo-card" id="tech-10" data-cat="fan">
         <img class="prod-img" src="images/0264ee3dbf03.webp" alt="100 Speed Rechargeable Handheld Fan wi" loading="lazy" onclick="openLightbox(this.src)">
         <h3>100 Speed Rechargeable Handheld Fan wi</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("100 Speed Rechargeable Handheld Fan wi", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-11">
+      <div class="card photo-card" id="tech-11" data-cat="camera">
         <img class="prod-img" src="images/c27fbd69d8d2.webp" alt="12 Inch LED Ring Light with Tripod Sta" loading="lazy" onclick="openLightbox(this.src)">
         <h3>12 Inch LED Ring Light with Tripod Sta</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("12 Inch LED Ring Light with Tripod Sta", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-12">
+      <div class="card photo-card" id="tech-12" data-cat="power">
         <img class="prod-img" src="images/6be60a35cc0b.webp" alt="20000 Mah Transparent Power bank 22 5" loading="lazy" onclick="openLightbox(this.src)">
         <h3>20000 Mah Transparent Power bank 22 5</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("20000 Mah Transparent Power bank 22 5", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-13">
+      <div class="card photo-card" id="tech-13" data-cat="holder">
         <img class="prod-img" src="images/4cc471d418e1.webp" alt="360 Rotating Metal Aluminum Alloy Phon" loading="lazy" onclick="openLightbox(this.src)">
         <h3>360 Rotating Metal Aluminum Alloy Phon</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("360 Rotating Metal Aluminum Alloy Phon", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-14">
+      <div class="card photo-card" id="tech-14" data-cat="light">
         <img class="prod-img" src="images/2483346e70b6.webp" alt="3D Large LED Digital Wall Clock with A" loading="lazy" onclick="openLightbox(this.src)">
         <h3>3D Large LED Digital Wall Clock with A</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("3D Large LED Digital Wall Clock with A", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-15">
+      <div class="card photo-card" id="tech-15" data-cat="light">
         <img class="prod-img" src="images/d980a3ccc4a5.webp" alt="3D Large LED Digital Wall Clock with A" loading="lazy" onclick="openLightbox(this.src)">
         <h3>3D Large LED Digital Wall Clock with A</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("3D Large LED Digital Wall Clock with A", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-16">
+      <div class="card photo-card" id="tech-16" data-cat="safety">
         <img class="prod-img" src="images/e1467b124804.webp" alt="801 Type Stun Gun Mini" loading="lazy" onclick="openLightbox(this.src)">
         <h3>801 Type Stun Gun Mini</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("801 Type Stun Gun Mini", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-17">
+      <div class="card photo-card" id="tech-17" data-cat="safety">
         <img class="prod-img" src="images/3dee6a67166f.webp" alt="928 High Voltage Stun Gun Big with LED" loading="lazy" onclick="openLightbox(this.src)">
         <h3>928 High Voltage Stun Gun Big with LED</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("928 High Voltage Stun Gun Big with LED", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-18">
+      <div class="card photo-card" id="tech-18" data-cat="camera">
         <img class="prod-img" src="images/5bf48abfed7d.webp" alt="A9 mini HD camera 1" loading="lazy" onclick="openLightbox(this.src)">
         <h3>A9 mini HD camera 1</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("A9 mini HD camera 1", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-19">
+      <div class="card photo-card" id="tech-19" data-cat="light">
         <img class="prod-img" src="images/c08a70026d52.webp" alt="Aiorrax Oryn 5D Holographic Star Ocean" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Aiorrax Oryn 5D Holographic Star Ocean</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Aiorrax Oryn 5D Holographic Star Ocean", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-20">
+      <div class="card photo-card" id="tech-20" data-cat="earbuds">
         <img class="prod-img" src="images/230cb69c048f.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AirPods Pro 2nd Generation White Dubai</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-21">
+      <div class="card photo-card" id="tech-21" data-cat="earbuds">
         <img class="prod-img" src="images/bd352e05d284.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AirPods Pro 2nd Generation White Dubai</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-22">
+      <div class="card photo-card" id="tech-22" data-cat="camera">
         <img class="prod-img" src="images/45fc80323766.webp" alt="Anker Eufy Security Indoor Cam C220" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Anker Eufy Security Indoor Cam C220</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Anker Eufy Security Indoor Cam C220", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-23">
+      <div class="card photo-card" id="tech-23" data-cat="charger">
         <img class="prod-img" src="images/876b47086ae5.webp" alt="Anker Nano 45W GaN Charger with Smart" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Anker Nano 45W GaN Charger with Smart</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Anker Nano 45W GaN Charger with Smart", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-24">
+      <div class="card photo-card" id="tech-24" data-cat="charger">
         <img class="prod-img" src="images/f391411fa56f.webp" alt="Anker PowerPort III 20W Cube PD USB C" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Anker PowerPort III 20W Cube PD USB C</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Anker PowerPort III 20W Cube PD USB C", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-25">
+      <div class="card photo-card" id="tech-25" data-cat="earbuds">
         <img class="prod-img" src="images/7cdd9d9a4a45.webp" alt="Apple airpods pro FRB MASTER C" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Apple airpods pro FRB MASTER C</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Apple airpods pro FRB MASTER C", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-26">
+      <div class="card photo-card" id="tech-26" data-cat="other">
         <img class="prod-img" src="images/13c4c4a5449b.webp" alt="Astronaut sensor Flying Doll" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Astronaut sensor Flying Doll</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Astronaut sensor Flying Doll", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-27">
+      <div class="card photo-card" id="tech-27" data-cat="power">
         <img class="prod-img" src="images/17b3e845bf33.webp" alt="AWEI PA 103 30000mAh 22 5w 1" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AWEI PA 103 30000mAh 22 5w 1</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AWEI PA 103 30000mAh 22 5w 1", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-28">
+      <div class="card photo-card" id="tech-28" data-cat="earbuds">
         <img class="prod-img" src="images/3669e2ef26a0.webp" alt="AWEI T 92 ANC PRO TWS" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AWEI T 92 ANC PRO TWS</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AWEI T 92 ANC PRO TWS", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-29">
+      <div class="card photo-card" id="tech-29" data-cat="earbuds">
         <img class="prod-img" src="images/b60b6e254337.webp" alt="Awei T13 Pro True Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Awei T13 Pro True Wireless Earbuds</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Awei T13 Pro True Wireless Earbuds", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-30">
+      <div class="card photo-card" id="tech-30" data-cat="earbuds">
         <img class="prod-img" src="images/50eef5c488a0.webp" alt="AWEI T56 ANC" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AWEI T56 ANC</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AWEI T56 ANC", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-31">
+      <div class="card photo-card" id="tech-31" data-cat="earbuds">
         <img class="prod-img" src="images/9aedc6a3dabd.webp" alt="AWEI TA17 ANC" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AWEI TA17 ANC</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AWEI TA17 ANC", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-32">
+      <div class="card photo-card" id="tech-32" data-cat="earbuds">
         <img class="prod-img" src="images/1161931dacff.webp" alt="Awei TP100 ENC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Awei TP100 ENC Wireless Earbuds</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Awei TP100 ENC Wireless Earbuds", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-33">
+      <div class="card photo-card" id="tech-33" data-cat="speaker">
         <img class="prod-img" src="images/cdc93b02294b.webp" alt="AWEI Y887 40w speaker 2" loading="lazy" onclick="openLightbox(this.src)">
         <h3>AWEI Y887 40w speaker 2</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("AWEI Y887 40w speaker 2", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-34">
+      <div class="card photo-card" id="tech-34" data-cat="watch">
         <img class="prod-img" src="images/d00bd7958245.webp" alt="BW11 Smartwatch 4G Direct Sim Calling" loading="lazy" onclick="openLightbox(this.src)">
         <h3>BW11 Smartwatch 4G Direct Sim Calling</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("BW11 Smartwatch 4G Direct Sim Calling", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-35">
+      <div class="card photo-card" id="tech-35" data-cat="watch">
         <img class="prod-img" src="images/e8f2c17331da.webp" alt="BW9 Pro Smart watch" loading="lazy" onclick="openLightbox(this.src)">
         <h3>BW9 Pro Smart watch</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("BW9 Pro Smart watch", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-36">
+      <div class="card photo-card" id="tech-36" data-cat="light">
         <img class="prod-img" src="images/50c9581f25ea.webp" alt="Camping flashlight X 10" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Camping flashlight X 10</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Camping flashlight X 10", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-37">
+      <div class="card photo-card" id="tech-37" data-cat="headphone">
         <img class="prod-img" src="images/a1f481586216.webp" alt="Cat Ear Bluetooth Headphone BLACK" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Cat Ear Bluetooth Headphone BLACK</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Cat Ear Bluetooth Headphone BLACK", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-38">
+      <div class="card photo-card" id="tech-38" data-cat="light">
         <img class="prod-img" src="images/eea2d7463375.webp" alt="Ceramic Table Lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Ceramic Table Lamp</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Ceramic Table Lamp", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-39">
+      <div class="card photo-card" id="tech-39" data-cat="watch">
         <img class="prod-img" src="images/2c9af7b2035c.webp" alt="Colmi P76 Smartwatch With Bluetooth Ca" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Colmi P76 Smartwatch With Bluetooth Ca</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Colmi P76 Smartwatch With Bluetooth Ca", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-40">
+      <div class="card photo-card" id="tech-40" data-cat="light">
         <img class="prod-img" src="images/89fdba992125.webp" alt="Crystal Diamond Table Lamp Touch Contr" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Crystal Diamond Table Lamp Touch Contr</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Crystal Diamond Table Lamp Touch Contr", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-41">
+      <div class="card photo-card" id="tech-41" data-cat="other">
         <img class="prod-img" src="images/d5543dfda7f2.webp" alt="Digital thunder xst 836 usb" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Digital thunder xst 836 usb</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Digital thunder xst 836 usb", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-42">
+      <div class="card photo-card" id="tech-42" data-cat="fan">
         <img class="prod-img" src="images/2ff499c50a45.webp" alt="DY28 Magnetic Mobile Phone Cooler Semi" loading="lazy" onclick="openLightbox(this.src)">
         <h3>DY28 Magnetic Mobile Phone Cooler Semi</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("DY28 Magnetic Mobile Phone Cooler Semi", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-43">
+      <div class="card photo-card" id="tech-43" data-cat="earbuds">
         <img class="prod-img" src="images/e18e2add65e0.webp" alt="EQ34 Plus Rima ANC ENC TWS Earbud App" loading="lazy" onclick="openLightbox(this.src)">
         <h3>EQ34 Plus Rima ANC ENC TWS Earbud App</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("EQ34 Plus Rima ANC ENC TWS Earbud App", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-44">
+      <div class="card photo-card" id="tech-44" data-cat="speaker">
         <img class="prod-img" src="images/39dfa6050c26.webp" alt="ET 312 Portable Bluetooth Speaker with" loading="lazy" onclick="openLightbox(this.src)">
         <h3>ET 312 Portable Bluetooth Speaker with</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("ET 312 Portable Bluetooth Speaker with", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-45">
+      <div class="card photo-card" id="tech-45" data-cat="camera">
         <img class="prod-img" src="images/5576e6e6f4d5.webp" alt="F11 2 3 in 1 Wireless Microphone" loading="lazy" onclick="openLightbox(this.src)">
         <h3>F11 2 3 in 1 Wireless Microphone</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("F11 2 3 in 1 Wireless Microphone", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-46">
+      <div class="card photo-card" id="tech-46" data-cat="light">
         <img class="prod-img" src="images/bfb44110e8da.webp" alt="Flame Fireplace Aroma Diffuser" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Flame Fireplace Aroma Diffuser</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Flame Fireplace Aroma Diffuser", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-47">
+      <div class="card photo-card" id="tech-47" data-cat="light">
         <img class="prod-img" src="images/7ac46a6b4055.webp" alt="flame shaped crystal table lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>flame shaped crystal table lamp</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("flame shaped crystal table lamp", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-48">
+      <div class="card photo-card" id="tech-48" data-cat="care">
         <img class="prod-img" src="images/0bd8fc9e8ad2.webp" alt="Fugetsu 3 in 1 Rechargeable Women s Ra" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Fugetsu 3 in 1 Rechargeable Women s Ra</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Fugetsu 3 in 1 Rechargeable Women s Ra", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-49">
+      <div class="card photo-card" id="tech-49" data-cat="speaker">
         <img class="prod-img" src="images/81c3d503b5c4.webp" alt="G63 Smart Light Sound Speaker Fast Cha" loading="lazy" onclick="openLightbox(this.src)">
         <h3>G63 Smart Light Sound Speaker Fast Cha</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("G63 Smart Light Sound Speaker Fast Cha", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-50">
+      <div class="card photo-card" id="tech-50" data-cat="care">
         <img class="prod-img" src="images/46e63a0c2db6.webp" alt="GYT 999 Rechargable hair trimmer" loading="lazy" onclick="openLightbox(this.src)">
         <h3>GYT 999 Rechargable hair trimmer</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("GYT 999 Rechargable hair trimmer", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-51">
+      <div class="card photo-card" id="tech-51" data-cat="light">
         <img class="prod-img" src="images/440624665e7f.webp" alt="Heart shaped crystal table lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Heart shaped crystal table lamp</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Heart shaped crystal table lamp", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-52">
+      <div class="card photo-card" id="tech-52" data-cat="watch">
         <img class="prod-img" src="images/de1d734b1e2f.webp" alt="HOCO E112 smart watch" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO E112 smart watch</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO E112 smart watch", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-53">
+      <div class="card photo-card" id="tech-53" data-cat="earbuds">
         <img class="prod-img" src="images/e2f983dc36d0.webp" alt="HOCO EQ101 EARBUDS 10 HOUR" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO EQ101 EARBUDS 10 HOUR</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ101 EARBUDS 10 HOUR", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-54">
+      <div class="card photo-card" id="tech-54" data-cat="earbuds">
         <img class="prod-img" src="images/9a0b849d8d34.webp" alt="HOCO EQ33 Earphones" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO EQ33 Earphones</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ33 Earphones", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-55">
+      <div class="card photo-card" id="tech-55" data-cat="earbuds">
         <img class="prod-img" src="images/92b6b471f2f7.webp" alt="Hoco EW88 display tws ANC" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco EW88 display tws ANC</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco EW88 display tws ANC", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-56">
+      <div class="card photo-card" id="tech-56" data-cat="speaker">
         <img class="prod-img" src="images/af297f6656c7.webp" alt="Hoco HC3 speaker" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco HC3 speaker</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco HC3 speaker", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-57">
+      <div class="card photo-card" id="tech-57" data-cat="power">
         <img class="prod-img" src="images/02634c98749d.webp" alt="HOCO J155 Power bank 20000mAh" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO J155 Power bank 20000mAh</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO J155 Power bank 20000mAh", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-58">
+      <div class="card photo-card" id="tech-58" data-cat="power">
         <img class="prod-img" src="images/ce3759a1cef6.webp" alt="Hoco MMJ 21 22 5W 100000mAh" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco MMJ 21 22 5W 100000mAh</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 21 22 5W 100000mAh", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-59">
+      <div class="card photo-card" id="tech-59" data-cat="power">
         <img class="prod-img" src="images/b5a9da5f0c7f.webp" alt="Hoco MMJ 25 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco MMJ 25 30000mAh</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 25 30000mAh", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-60">
+      <div class="card photo-card" id="tech-60" data-cat="power">
         <img class="prod-img" src="images/2d8fbce2806a.webp" alt="HOCO MMJ13 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO MMJ13 30000mAh</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO MMJ13 30000mAh", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-61">
+      <div class="card photo-card" id="tech-61" data-cat="power">
         <img class="prod-img" src="images/b35979db41f2.webp" alt="Hoco MMJ17 22 5W 20000mAh Fast Chargin" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco MMJ17 22 5W 20000mAh Fast Chargin</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ17 22 5W 20000mAh Fast Chargin", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-62">
+      <div class="card photo-card" id="tech-62" data-cat="headphone">
         <img class="prod-img" src="images/35e54c1951d4.webp" alt="HOCO W118 Hoco gaming headset" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO W118 Hoco gaming headset</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO W118 Hoco gaming headset", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-63">
+      <div class="card photo-card" id="tech-63" data-cat="headphone">
         <img class="prod-img" src="images/cef837175203.webp" alt="Hoco W35 Air Bluetooth Wireless Headph" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hoco W35 Air Bluetooth Wireless Headph</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hoco W35 Air Bluetooth Wireless Headph", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-64">
+      <div class="card photo-card" id="tech-64" data-cat="headphone">
         <img class="prod-img" src="images/a66d203d8e5d.webp" alt="HOCO W35 Wireless Bluetooth Headphone" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOCO W35 Wireless Bluetooth Headphone</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO W35 Wireless Bluetooth Headphone", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-65">
+      <div class="card photo-card" id="tech-65" data-cat="speaker">
         <img class="prod-img" src="images/efdfc9b27f21.webp" alt="HOF HF F226 20W Wireless Bluetooth Spe" loading="lazy" onclick="openLightbox(this.src)">
         <h3>HOF HF F226 20W Wireless Bluetooth Spe</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOF HF F226 20W Wireless Bluetooth Spe", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-66">
+      <div class="card photo-card" id="tech-66" data-cat="camera">
         <img class="prod-img" src="images/55f8f00867a9.webp" alt="Hollyland LARK M2 Wireless Lavalier Mi" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hollyland LARK M2 Wireless Lavalier Mi</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Hollyland LARK M2 Wireless Lavalier Mi", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-67">
+      <div class="card photo-card" id="tech-67" data-cat="gaming">
         <img class="prod-img" src="images/e2f451572f81.webp" alt="J36 Ultra Online Gaming Handheld 2" loading="lazy" onclick="openLightbox(this.src)">
         <h3>J36 Ultra Online Gaming Handheld 2</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("J36 Ultra Online Gaming Handheld 2", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-68">
+      <div class="card photo-card" id="tech-68" data-cat="speaker">
         <img class="prod-img" src="images/f1aa6d082a2d.webp" alt="JBL Boombox 4 Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
         <h3>JBL Boombox 4 Portable Bluetooth Speak</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("JBL Boombox 4 Portable Bluetooth Speak", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-69">
+      <div class="card photo-card" id="tech-69" data-cat="speaker">
         <img class="prod-img" src="images/c17859d88254.webp" alt="JBL Charge 6 Portable Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
         <h3>JBL Charge 6 Portable Bluetooth Speake</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("JBL Charge 6 Portable Bluetooth Speake", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-70">
+      <div class="card photo-card" id="tech-70" data-cat="speaker">
         <img class="prod-img" src="images/544a2e6a1634.webp" alt="JBL Flip 6 Portable Bluetooth Speaker" loading="lazy" onclick="openLightbox(this.src)">
         <h3>JBL Flip 6 Portable Bluetooth Speaker</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("JBL Flip 6 Portable Bluetooth Speaker", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-71">
+      <div class="card photo-card" id="tech-71" data-cat="fan">
         <img class="prod-img" src="images/dde7477f4822.webp" alt="JY 2218 turbo table fan" loading="lazy" onclick="openLightbox(this.src)">
         <h3>JY 2218 turbo table fan</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("JY 2218 turbo table fan", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-72">
+      <div class="card photo-card" id="tech-72" data-cat="fan">
         <img class="prod-img" src="images/e437e7bc96ff.webp" alt="JY 2570 turbo table fan" loading="lazy" onclick="openLightbox(this.src)">
         <h3>JY 2570 turbo table fan</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("JY 2570 turbo table fan", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-73">
+      <div class="card photo-card" id="tech-73" data-cat="fan">
         <img class="prod-img" src="images/cdd6990fd8cf.webp" alt="K801 handheld fan" loading="lazy" onclick="openLightbox(this.src)">
         <h3>K801 handheld fan</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("K801 handheld fan", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-74">
+      <div class="card photo-card" id="tech-74" data-cat="care">
         <img class="prod-img" src="images/e90a7256f184.webp" alt="Kemey Km3365 Professional Foldable Hot" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Kemey Km3365 Professional Foldable Hot</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Kemey Km3365 Professional Foldable Hot", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-75">
+      <div class="card photo-card" id="tech-75" data-cat="care">
         <img class="prod-img" src="images/a9ede316ed24.webp" alt="KM 809 A trimmer" loading="lazy" onclick="openLightbox(this.src)">
         <h3>KM 809 A trimmer</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("KM 809 A trimmer", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-76">
+      <div class="card photo-card" id="tech-76" data-cat="care">
         <img class="prod-img" src="images/3235624a5818.webp" alt="KM 809 A trimmer1" loading="lazy" onclick="openLightbox(this.src)">
         <h3>KM 809 A trimmer1</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("KM 809 A trimmer1", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-77">
+      <div class="card photo-card" id="tech-77" data-cat="watch">
         <img class="prod-img" src="images/502fd9c4bf98.webp" alt="KW82 ultra 3 smartwatch" loading="lazy" onclick="openLightbox(this.src)">
         <h3>KW82 ultra 3 smartwatch</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("KW82 ultra 3 smartwatch", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-78">
+      <div class="card photo-card" id="tech-78" data-cat="holder">
         <img class="prod-img" src="images/8effe40a62d0.webp" alt="Laptop stand 1" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Laptop stand 1</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Laptop stand 1", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-79">
+      <div class="card photo-card" id="tech-79" data-cat="watch">
         <img class="prod-img" src="images/66b2a348f6e7.webp" alt="LAXASFIT GT6 PRO Watch" loading="lazy" onclick="openLightbox(this.src)">
         <h3>LAXASFIT GT6 PRO Watch</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("LAXASFIT GT6 PRO Watch", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-80">
+      <div class="card photo-card" id="tech-80" data-cat="light">
         <img class="prod-img" src="images/16f5445d320a.webp" alt="LED Light Strip 5 20Meter TV LED Backl" loading="lazy" onclick="openLightbox(this.src)">
         <h3>LED Light Strip 5 20Meter TV LED Backl</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("LED Light Strip 5 20Meter TV LED Backl", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-81">
+      <div class="card photo-card" id="tech-81" data-cat="light">
         <img class="prod-img" src="images/7d295a207cc6.webp" alt="LED Neon Light with Remote Control APP" loading="lazy" onclick="openLightbox(this.src)">
         <h3>LED Neon Light with Remote Control APP</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("LED Neon Light with Remote Control APP", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-82">
+      <div class="card photo-card" id="tech-82" data-cat="earbuds">
         <img class="prod-img" src="images/681b33b4f927.webp" alt="M10 TWS Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
         <h3>M10 TWS Bluetooth</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("M10 TWS Bluetooth", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-83">
+      <div class="card photo-card" id="tech-83" data-cat="earbuds">
         <img class="prod-img" src="images/49d632874701.webp" alt="M27 tws wireless Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
         <h3>M27 tws wireless Bluetooth</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("M27 tws wireless Bluetooth", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-84">
+      <div class="card photo-card" id="tech-84" data-cat="fan">
         <img class="prod-img" src="images/a9c02ad40dc3.webp" alt="MEMO CX07 15W Magnetic Semiconductor M" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MEMO CX07 15W Magnetic Semiconductor M</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MEMO CX07 15W Magnetic Semiconductor M", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-85">
+      <div class="card photo-card" id="tech-85" data-cat="fan">
         <img class="prod-img" src="images/957ad18893ab.webp" alt="MEMO CX14 10W Magnetic Phone Cooler TE" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MEMO CX14 10W Magnetic Phone Cooler TE</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MEMO CX14 10W Magnetic Phone Cooler TE", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-86">
+      <div class="card photo-card" id="tech-86" data-cat="other">
         <img class="prod-img" src="images/d686e3e8f8dd.webp" alt="MiLi MiTag Duo Smart Finder" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MiLi MiTag Duo Smart Finder</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MiLi MiTag Duo Smart Finder", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-87">
+      <div class="card photo-card" id="tech-87" data-cat="other">
         <img class="prod-img" src="images/4b3625260112.webp" alt="MiLi MiTag Duo Smart Finder Android iP" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MiLi MiTag Duo Smart Finder Android iP</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MiLi MiTag Duo Smart Finder Android iP", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-88">
+      <div class="card photo-card" id="tech-88" data-cat="light">
         <img class="prod-img" src="images/55d2e56ccd04.webp" alt="Mini Star Projector Night Light Nebula" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Mini Star Projector Night Light Nebula</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Mini Star Projector Night Light Nebula", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-89">
+      <div class="card photo-card" id="tech-89" data-cat="speaker">
         <img class="prod-img" src="images/4e5d33f31a4f.webp" alt="MKB SP5 True Wireless Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MKB SP5 True Wireless Bluetooth Speake</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MKB SP5 True Wireless Bluetooth Speake", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-90">
+      <div class="card photo-card" id="tech-90" data-cat="watch">
         <img class="prod-img" src="images/82c0f93c0c58.webp" alt="Mkb v03 band" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Mkb v03 band</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Mkb v03 band", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-91">
+      <div class="card photo-card" id="tech-91" data-cat="neckband">
         <img class="prod-img" src="images/0f2eb264e51f.webp" alt="MMJ11 ENC Bluetooth Neckband Earphone" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MMJ11 ENC Bluetooth Neckband Earphone</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("MMJ11 ENC Bluetooth Neckband Earphone", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-92">
+      <div class="card photo-card" id="tech-92" data-cat="light">
         <img class="prod-img" src="images/563dd9219a6f.webp" alt="O shaped crystal table lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>O shaped crystal table lamp</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("O shaped crystal table lamp", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-93">
+      <div class="card photo-card" id="tech-93" data-cat="power">
         <img class="prod-img" src="images/72787dd034d3.webp" alt="Olax POE D8 PRO 20000mAh Mini UPS Warr" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Olax POE D8 PRO 20000mAh Mini UPS Warr</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Olax POE D8 PRO 20000mAh Mini UPS Warr", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-94">
+      <div class="card photo-card" id="tech-94" data-cat="neckband">
         <img class="prod-img" src="images/121862ebd5e1.webp" alt="OnePlus Bullet Wireless Z3 Neckband" loading="lazy" onclick="openLightbox(this.src)">
         <h3>OnePlus Bullet Wireless Z3 Neckband</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullet Wireless Z3 Neckband", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-95">
+      <div class="card photo-card" id="tech-95" data-cat="neckband">
         <img class="prod-img" src="images/cb8408ad25a6.webp" alt="OnePlus Bullets Wireless Z3 neckband e" loading="lazy" onclick="openLightbox(this.src)">
         <h3>OnePlus Bullets Wireless Z3 neckband e</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullets Wireless Z3 neckband e", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-96">
+      <div class="card photo-card" id="tech-96" data-cat="neckband">
         <img class="prod-img" src="images/9c23d8135129.webp" alt="oraimo Necklace Lite OEB 311 wireless" loading="lazy" onclick="openLightbox(this.src)">
         <h3>oraimo Necklace Lite OEB 311 wireless</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("oraimo Necklace Lite OEB 311 wireless", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-97">
+      <div class="card photo-card" id="tech-97" data-cat="speaker">
         <img class="prod-img" src="images/ab637970077a.webp" alt="P193 High power Portable Speaker with" loading="lazy" onclick="openLightbox(this.src)">
         <h3>P193 High power Portable Speaker with</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("P193 High power Portable Speaker with", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-98">
+      <div class="card photo-card" id="tech-98" data-cat="earbuds">
         <img class="prod-img" src="images/f8b96d58294d.webp" alt="P9 Plus Painted AirMax Bluetooth Wirel" loading="lazy" onclick="openLightbox(this.src)">
         <h3>P9 Plus Painted AirMax Bluetooth Wirel</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("P9 Plus Painted AirMax Bluetooth Wirel", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-99">
+      <div class="card photo-card" id="tech-99" data-cat="light">
         <img class="prod-img" src="images/3285760c5d3a.webp" alt="Pet moon table lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Pet moon table lamp</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Pet moon table lamp", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-100">
+      <div class="card photo-card" id="tech-100" data-cat="speaker">
         <img class="prod-img" src="images/bdb211ee99c6.webp" alt="Portable BT Speaker 20W stereo BT5 0 1" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Portable BT Speaker 20W stereo BT5 0 1</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Portable BT Speaker 20W stereo BT5 0 1", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-101">
+      <div class="card photo-card" id="tech-101" data-cat="care">
         <img class="prod-img" src="images/fe89cf9f96dc.webp" alt="Portable Mini Handheld Mesh Nebulizer" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Portable Mini Handheld Mesh Nebulizer</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Portable Mini Handheld Mesh Nebulizer", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-102">
+      <div class="card photo-card" id="tech-102" data-cat="holder">
         <img class="prod-img" src="images/4fcd087fe59a.webp" alt="Q02 face tracking phone holder" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Q02 face tracking phone holder</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Q02 face tracking phone holder", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-103">
+      <div class="card photo-card" id="tech-103" data-cat="earbuds">
         <img class="prod-img" src="images/178de79b7d5e.webp" alt="Q10 4 Earphones Wireless Bluetooth Hea" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Q10 4 Earphones Wireless Bluetooth Hea</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Q10 4 Earphones Wireless Bluetooth Hea", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-104">
+      <div class="card photo-card" id="tech-104" data-cat="earbuds">
         <img class="prod-img" src="images/7bc608aca687.webp" alt="QCY MeloBuds A30 ANC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
         <h3>QCY MeloBuds A30 ANC Wireless Earbuds</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds A30 ANC Wireless Earbuds", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-105">
+      <div class="card photo-card" id="tech-105" data-cat="earbuds">
         <img class="prod-img" src="images/1a7b193a9e2d.webp" alt="QCY MeloBuds N50 HT12 TWS" loading="lazy" onclick="openLightbox(this.src)">
         <h3>QCY MeloBuds N50 HT12 TWS</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds N50 HT12 TWS", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-106">
+      <div class="card photo-card" id="tech-106" data-cat="gaming">
         <img class="prod-img" src="images/95a5d3cd6bdd.webp" alt="R36S Retro Handheld Video Game Console" loading="lazy" onclick="openLightbox(this.src)">
         <h3>R36S Retro Handheld Video Game Console</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("R36S Retro Handheld Video Game Console", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-107">
+      <div class="card photo-card" id="tech-107" data-cat="earbuds">
         <img class="prod-img" src="images/649ad0bb240c.webp" alt="RE HG24 gaming tws" loading="lazy" onclick="openLightbox(this.src)">
         <h3>RE HG24 gaming tws</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("RE HG24 gaming tws", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-108">
+      <div class="card photo-card" id="tech-108" data-cat="power">
         <img class="prod-img" src="images/4a9cf38fcf5c.webp" alt="RE PB027 Power bank" loading="lazy" onclick="openLightbox(this.src)">
         <h3>RE PB027 Power bank</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("RE PB027 Power bank", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-109">
+      <div class="card photo-card" id="tech-109" data-cat="speaker">
         <img class="prod-img" src="images/ddaf3ee3ea98.webp" alt="Remax RB M13 portable wireless Bluetoo" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Remax RB M13 portable wireless Bluetoo</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Remax RB M13 portable wireless Bluetoo", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-110">
+      <div class="card photo-card" id="tech-110" data-cat="light">
         <img class="prod-img" src="images/0f4d0e1abc29.webp" alt="Sanford High Power Super Bright Flashl" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Sanford High Power Super Bright Flashl</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Sanford High Power Super Bright Flashl", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-111">
+      <div class="card photo-card" id="tech-111" data-cat="safety">
         <img class="prod-img" src="images/de282bb181fc.webp" alt="Self Defence Telescopic Baton With Saf" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Self Defence Telescopic Baton With Saf</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Self Defence Telescopic Baton With Saf", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-112">
+      <div class="card photo-card" id="tech-112" data-cat="safety">
         <img class="prod-img" src="images/b95f3669e624.webp" alt="Smart Fingerprint Padlock USB Recharge" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Smart Fingerprint Padlock USB Recharge</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Smart Fingerprint Padlock USB Recharge", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-113">
+      <div class="card photo-card" id="tech-113" data-cat="watch">
         <img class="prod-img" src="images/a3228b2f8468.webp" alt="SMART WATCH MULTI FUNCTION MK 38" loading="lazy" onclick="openLightbox(this.src)">
         <h3>SMART WATCH MULTI FUNCTION MK 38</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("SMART WATCH MULTI FUNCTION MK 38", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-114">
+      <div class="card photo-card" id="tech-114" data-cat="care">
         <img class="prod-img" src="images/aa2626ff15fc.webp" alt="Sokany SK 2211 Professional Hair Dryer" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Sokany SK 2211 Professional Hair Dryer</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Sokany SK 2211 Professional Hair Dryer", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-115">
+      <div class="card photo-card" id="tech-115" data-cat="earbuds">
         <img class="prod-img" src="images/c5d75770fdcf.webp" alt="Soundcore R50i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Soundcore R50i 18 month warrenty</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Soundcore R50i 18 month warrenty", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-116">
+      <div class="card photo-card" id="tech-116" data-cat="earbuds">
         <img class="prod-img" src="images/82537ac39311.webp" alt="Soundcore V20i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Soundcore V20i 18 month warrenty</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Soundcore V20i 18 month warrenty", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-117">
+      <div class="card photo-card" id="tech-117" data-cat="camera">
         <img class="prod-img" src="images/012201d1992b.webp" alt="V380 3 lens bulb camera" loading="lazy" onclick="openLightbox(this.src)">
         <h3>V380 3 lens bulb camera</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("V380 3 lens bulb camera", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-118">
+      <div class="card photo-card" id="tech-118" data-cat="camera">
         <img class="prod-img" src="images/ef1be9e7fa3f.webp" alt="V380 Pro dual lens Wi Fi smart securit" loading="lazy" onclick="openLightbox(this.src)">
         <h3>V380 Pro dual lens Wi Fi smart securit</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("V380 Pro dual lens Wi Fi smart securit", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-119">
+      <div class="card photo-card" id="tech-119" data-cat="speaker">
         <img class="prod-img" src="images/209dc94654df.webp" alt="V8 High Power Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
         <h3>V8 High Power Portable Bluetooth Speak</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("V8 High Power Portable Bluetooth Speak", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-120">
+      <div class="card photo-card" id="tech-120" data-cat="earbuds">
         <img class="prod-img" src="images/d5a8c9c8bfd8.webp" alt="VD EARPHONE 010 Ven Dens" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VD EARPHONE 010 Ven Dens</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 010 Ven Dens", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-121">
+      <div class="card photo-card" id="tech-121" data-cat="earbuds">
         <img class="prod-img" src="images/093b4a4c475e.webp" alt="VD EARPHONE 022" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VD EARPHONE 022</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 022", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-122">
+      <div class="card photo-card" id="tech-122" data-cat="holder">
         <img class="prod-img" src="images/637a36bbcb11.webp" alt="VD HD027 phone holder" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VD HD027 phone holder</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VD HD027 phone holder", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-123">
+      <div class="card photo-card" id="tech-123" data-cat="earbuds">
         <img class="prod-img" src="images/ba01f30909b4.webp" alt="VEN DENS BT021 pro TWS" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VEN DENS BT021 pro TWS</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT021 pro TWS", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-124">
+      <div class="card photo-card" id="tech-124" data-cat="earbuds">
         <img class="prod-img" src="images/8aadac5e9491.webp" alt="VEN DENS BT029 sports earphones" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VEN DENS BT029 sports earphones</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT029 sports earphones", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-125">
+      <div class="card photo-card" id="tech-125" data-cat="headphone">
         <img class="prod-img" src="images/a0e541ed908c.webp" alt="VEN DENS HP016 Headset" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VEN DENS HP016 Headset</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS HP016 Headset", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-126">
+      <div class="card photo-card" id="tech-126" data-cat="headphone">
         <img class="prod-img" src="images/8c0775d7377a.webp" alt="W117 headset Hoco gaming" loading="lazy" onclick="openLightbox(this.src)">
         <h3>W117 headset Hoco gaming</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("W117 headset Hoco gaming", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-127">
+      <div class="card photo-card" id="tech-127" data-cat="power">
         <img class="prod-img" src="images/9c01ebd882d5.webp" alt="WGP103 Mini WiFi Router UPS 10400mAh 5" loading="lazy" onclick="openLightbox(this.src)">
         <h3>WGP103 Mini WiFi Router UPS 10400mAh 5</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("WGP103 Mini WiFi Router UPS 10400mAh 5", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-128">
+      <div class="card photo-card" id="tech-128" data-cat="care">
         <img class="prod-img" src="images/934cf4c5baa6.webp" alt="Wireless Neck Shoulder Massager with H" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Wireless Neck Shoulder Massager with H</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
         <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Wireless Neck Shoulder Massager with H", 0)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-129">
+      <div class="card photo-card" id="tech-129" data-cat="charger">
         <img class="prod-img" src="images/e7cf55a9d80e.webp" alt="XIAOMI 67W SonicCharge 3 0 Charger" loading="lazy" onclick="openLightbox(this.src)">
         <h3>XIAOMI 67W SonicCharge 3 0 Charger</h3>
         <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
@@ -2384,6 +2412,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
 
   /* ===== Jump to a product (used by the hero tiles) ===== */
   function goTo(id){
+    if(window.kyReset) window.kyReset();
     var card = document.getElementById(id); if(!card) return;
     var sec = card.closest('.section');
     if(card.classList.contains('extra') && sec && !sec.classList.contains('expanded')) setExpanded(sec, true);
@@ -2838,6 +2867,64 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(function(e){ console.warn('SW registration failed:', e); });
   });
 }
+</script>
+<script>
+(function(){
+  var inp=document.getElementById('siteSearch'), clr=document.getElementById('searchClear'), info=document.getElementById('searchInfo');
+  var tech=document.getElementById('tech'), chips=document.getElementById('techFilter');
+  var secs=['three-party','three-print','tech'].map(function(i){return document.getElementById(i)}).filter(Boolean);
+  var head=document.getElementById('threepiece');
+  function norm(t){return (t||'').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]+/gu,' ').trim();}
+  var items=[];
+  secs.forEach(function(sec){
+    Array.prototype.forEach.call(sec.querySelectorAll('.grid .card'),function(c){
+      var chip=c.dataset.cat&&chips?chips.querySelector('[data-cat="'+c.dataset.cat+'"]'):null;
+      var t=norm(c.textContent+' '+(chip?chip.textContent:''));
+      items.push({c:c,sec:sec,t:t,tc:t.replace(/ /g,'')});
+    });
+  });
+  var curCat='all';
+  function setCat(cat){
+    curCat=cat;
+    if(chips) Array.prototype.forEach.call(chips.children,function(b){b.classList.toggle('active',b.dataset.cat===cat);});
+    tech.classList.toggle('filtering',cat!=='all');
+    items.forEach(function(it){ if(it.sec===tech) it.c.classList.toggle('is-hidden',cat!=='all'&&it.c.dataset.cat!==cat); });
+  }
+  if(chips) chips.addEventListener('click',function(e){
+    var b=e.target.closest('.tf-chip'); if(!b) return;
+    setCat(b.dataset.cat);
+    tech.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  function search(){
+    var q=norm(inp.value); clr.hidden=!q;
+    if(!q){
+      document.body.classList.remove('searching');
+      secs.forEach(function(s){s.classList.remove('is-hidden');});
+      if(head) head.classList.remove('is-hidden');
+      items.forEach(function(it){it.c.classList.remove('is-hidden');});
+      info.innerHTML=''; setCat(curCat); return;
+    }
+    document.body.classList.add('searching'); tech.classList.remove('filtering');
+    var terms=q.split(' '), n=0, per={};
+    items.forEach(function(it){
+      var ok=terms.every(function(w){return it.t.indexOf(w)>-1||it.tc.indexOf(w)>-1;});
+      it.c.classList.toggle('is-hidden',!ok);
+      if(ok){n++; per[it.sec.id]=1;}
+    });
+    secs.forEach(function(s){s.classList.toggle('is-hidden',!per[s.id]);});
+    if(head) head.classList.add('is-hidden');
+    info.innerHTML=n?('<b>'+n+'</b>টি প্রোডাক্ট পাওয়া গেছে'):'কোনো প্রোডাক্ট পাওয়া যায়নি — <a href="https://wa.me/8801786555387" target="_blank" rel="noopener">WhatsApp-এ জিজ্ঞেস করুন</a>';
+  }
+  window.kyReset=function(){ if(inp&&inp.value){inp.value=''; search();} if(curCat!=='all') setCat('all'); };
+  window.kySearchFocus=function(e){
+    if(e) e.preventDefault();
+    var b=document.getElementById('search'); if(b) b.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(function(){inp.focus({preventScroll:true});},350); return false;
+  };
+  inp.addEventListener('input',search);
+  inp.addEventListener('keydown',function(e){ if(e.key==='Escape'){inp.value=''; search();} if(e.key==='Enter'){ var f=document.querySelector('.grid .card:not(.is-hidden)'); if(document.body.classList.contains('searching')&&f) f.scrollIntoView({behavior:'smooth',block:'center'}); inp.blur(); } });
+  clr.addEventListener('click',function(){inp.value=''; search(); inp.focus();});
+})();
 </script>
 </body>
 </html>
