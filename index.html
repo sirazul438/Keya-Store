@@ -826,6 +826,7 @@ footer::before{content:""; position:absolute; left:0; right:0; top:0; height:2px
   ::placeholder{color:#8A8177;}
 }
 
+.sub-link{padding-left:34px !important; font-size:.85em !important; opacity:.9;}
 /* ===== Search + Tech category filter ===== */
 .search-box{position:relative; max-width:560px; margin:0 auto 12px;}
 .search-box input{width:100%; box-sizing:border-box; padding:12px 44px 12px 44px; border-radius:999px; border:1.5px solid var(--line); background:#fff; color:var(--navy); font:inherit; font-size:16px; outline:none; -webkit-appearance:none; appearance:none;}
@@ -864,6 +865,9 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <ul class="dropdown-menu">
           <li><a href="#threepiece">👗 থ্রি-পিস (Boutique)</a></li>
           <li><a href="#tech">🎧 Tech</a></li>
+          <li><a href="#tech-earbuds" class="sub-link">↳ 🎧 Earbuds &amp; Headphone</a></li>
+          <li><a href="#tech-power" class="sub-link">↳ 🔋 Powerbank</a></li>
+          <li><a href="#tech-speaker" class="sub-link">↳ 🔊 Speaker</a></li>
           <li><a href="#app-download" onclick="goToAppDownload(event)">📱 App</a></li>
           <li><a href="#contact">☎️ যোগাযোগ (Contact)</a></li>
         </ul>
@@ -893,6 +897,9 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
       <div class="qn-cat-menu" id="qn-cat-menu">
         <a href="#threepiece">👗 থ্রি-পিস (Boutique)</a>
         <a href="#tech">🎧 Tech</a>
+        <a href="#tech-earbuds" class="sub-link">↳ 🎧 Earbuds &amp; Headphone</a>
+        <a href="#tech-power" class="sub-link">↳ 🔋 Powerbank</a>
+        <a href="#tech-speaker" class="sub-link">↳ 🔊 Speaker</a>
         <a href="#search" onclick="return kySearchFocus(event)">🔍 Search</a>
         <a href="#app-download" onclick="goToAppDownload(event)">📱 App</a>
         <a href="#contact">☎️ যোগাযোগ (Contact)</a>
@@ -946,7 +953,7 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
       </div>
 </section>
 
-<section class="section boutique" id="three-party" data-limit="6">
+<section class="section boutique" id="three-party" data-limit="4">
   <div class="wrap">
     <div class="section-head"><div><span class="tag pink">✨ পার্টি / হেভি ওয়ার্ক</span><h2>পার্টি ও হেভি ওয়ার্ক থ্রি-পিস</h2><p>অর্গানজা, আফগান সিল্ক, Jimmy Choo ও Sada Bahar — বিয়ে, দাওয়াত আর পার্টির জন্য।</p></div></div>
     <div class="grid">
@@ -1042,7 +1049,7 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
   </div>
 </section>
 
-<section class="section boutique" id="three-print" data-limit="6">
+<section class="section boutique" id="three-print" data-limit="4">
   <div class="wrap">
     <div class="section-head"><div><span class="tag pink">🌸 প্রিন্ট</span><h2>প্রিন্ট থ্রি-পিস (নরমাল ড্রেস)</h2><p>Bin Hameed লেজার কাট, Mannat ও Mashaal — প্রতিদিন আর দাওয়াতে পরার মতো হালকা প্রিন্ট।</p></div></div>
     <div class="grid">
@@ -1338,16 +1345,446 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
   </div>
 </section>
 
-<section class="section tech" id="tech" data-limit="8">
+<section class="section tech" id="tech">
   <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="tag teal">🎧 Tech</span>
-        <h2>প্রতিদিনের Gadgets</h2>
-        <p>ফোন আর দৈনন্দিন জীবনের জন্য ভরসাযোগ্য অ্যাকসেসরিজ।</p>
+    <div class="section-head"><div><span class="tag teal">🎧 Tech</span><h2>প্রতিদিনের Gadgets</h2><p>ফোন আর দৈনন্দিন জীবনের জন্য ভরসাযোগ্য অ্যাকসেসরিজ।</p></div></div>
+    <div class="cat-pills threepiece-jump"><a class="tp-jump" href="#tech-earbuds">🎧 Earbuds &amp; Headphone</a><a class="tp-jump" href="#tech-power">🔋 Powerbank</a><a class="tp-jump" href="#tech-speaker">🔊 Speaker</a><a class="tp-jump" href="#tech-more">✨ আরও Tech</a></div>
+  </div>
+</section>
+
+<section class="section tech" id="tech-earbuds" data-limit="4">
+  <div class="wrap">
+    <div class="section-head"><div><span class="tag teal">🎧 Earbuds & Headphone</span><h2>Earbuds &amp; Headphone</h2><p>Earbuds, TWS, Headphone আর Neckband — গান, কল আর গেমিংয়ের জন্য।</p></div></div>
+    <div class="grid">
+      <div class="card photo-card" id="tech-20" data-cat="earbuds">
+        <img class="prod-img" src="images/230cb69c048f.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AirPods Pro 2nd Generation White Dubai</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 550)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-21" data-cat="earbuds">
+        <img class="prod-img" src="images/bd352e05d284.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AirPods Pro 2nd Generation White Dubai</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 550)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-25" data-cat="earbuds">
+        <img class="prod-img" src="images/7cdd9d9a4a45.webp" alt="Apple airpods pro FRB MASTER C" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Apple airpods pro FRB MASTER C</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৯৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Apple airpods pro FRB MASTER C", 990)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-28" data-cat="earbuds">
+        <img class="prod-img" src="images/3669e2ef26a0.webp" alt="AWEI T 92 ANC PRO TWS" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AWEI T 92 ANC PRO TWS</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৯৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AWEI T 92 ANC PRO TWS", 1940)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-29" data-cat="earbuds">
+        <img class="prod-img" src="images/b60b6e254337.webp" alt="Awei T13 Pro True Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Awei T13 Pro True Wireless Earbuds</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Awei T13 Pro True Wireless Earbuds", 1140)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-30" data-cat="earbuds">
+        <img class="prod-img" src="images/50eef5c488a0.webp" alt="AWEI T56 ANC" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AWEI T56 ANC</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৮৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AWEI T56 ANC", 1890)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-31" data-cat="earbuds">
+        <img class="prod-img" src="images/9aedc6a3dabd.webp" alt="AWEI TA17 ANC" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AWEI TA17 ANC</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৭৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AWEI TA17 ANC", 1740)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-32" data-cat="earbuds">
+        <img class="prod-img" src="images/1161931dacff.webp" alt="Awei TP100 ENC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Awei TP100 ENC Wireless Earbuds</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,০৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Awei TP100 ENC Wireless Earbuds", 2040)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-37" data-cat="headphone">
+        <img class="prod-img" src="images/a1f481586216.webp" alt="Cat Ear Bluetooth Headphone BLACK" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Cat Ear Bluetooth Headphone BLACK</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Cat Ear Bluetooth Headphone BLACK", 550)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-43" data-cat="earbuds">
+        <img class="prod-img" src="images/e18e2add65e0.webp" alt="EQ34 Plus Rima ANC ENC TWS Earbud App" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>EQ34 Plus Rima ANC ENC TWS Earbud App</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৮৭০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("EQ34 Plus Rima ANC ENC TWS Earbud App", 870)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-53" data-cat="earbuds">
+        <img class="prod-img" src="images/e2f983dc36d0.webp" alt="HOCO EQ101 EARBUDS 10 HOUR" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO EQ101 EARBUDS 10 HOUR</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,০৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ101 EARBUDS 10 HOUR", 1050)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-54" data-cat="earbuds">
+        <img class="prod-img" src="images/9a0b849d8d34.webp" alt="HOCO EQ33 Earphones" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO EQ33 Earphones</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৭৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ33 Earphones", 790)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-55" data-cat="earbuds">
+        <img class="prod-img" src="images/92b6b471f2f7.webp" alt="Hoco EW88 display tws ANC" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco EW88 display tws ANC</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,২৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco EW88 display tws ANC", 1290)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-62" data-cat="headphone">
+        <img class="prod-img" src="images/35e54c1951d4.webp" alt="HOCO W118 Hoco gaming headset" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO W118 Hoco gaming headset</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO W118 Hoco gaming headset", 1120)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-63" data-cat="headphone">
+        <img class="prod-img" src="images/cef837175203.webp" alt="Hoco W35 Air Bluetooth Wireless Headph" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco W35 Air Bluetooth Wireless Headph</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,২৩০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco W35 Air Bluetooth Wireless Headph", 1230)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-64" data-cat="headphone">
+        <img class="prod-img" src="images/a66d203d8e5d.webp" alt="HOCO W35 Wireless Bluetooth Headphone" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO W35 Wireless Bluetooth Headphone</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১৭০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO W35 Wireless Bluetooth Headphone", 1170)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-82" data-cat="earbuds">
+        <img class="prod-img" src="images/681b33b4f927.webp" alt="M10 TWS Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>M10 TWS Bluetooth</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("M10 TWS Bluetooth", 520)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-83" data-cat="earbuds">
+        <img class="prod-img" src="images/49d632874701.webp" alt="M27 tws wireless Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>M27 tws wireless Bluetooth</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৪৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("M27 tws wireless Bluetooth", 490)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-91" data-cat="neckband">
+        <img class="prod-img" src="images/0f2eb264e51f.webp" alt="MMJ11 ENC Bluetooth Neckband Earphone" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>MMJ11 ENC Bluetooth Neckband Earphone</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("MMJ11 ENC Bluetooth Neckband Earphone", 1140)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-94" data-cat="neckband">
+        <img class="prod-img" src="images/121862ebd5e1.webp" alt="OnePlus Bullet Wireless Z3 Neckband" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>OnePlus Bullet Wireless Z3 Neckband</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,১৭০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullet Wireless Z3 Neckband", 2170)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-95" data-cat="neckband">
+        <img class="prod-img" src="images/cb8408ad25a6.webp" alt="OnePlus Bullets Wireless Z3 neckband e" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>OnePlus Bullets Wireless Z3 neckband e</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৮০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullets Wireless Z3 neckband e", 1800)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-96" data-cat="neckband">
+        <img class="prod-img" src="images/9c23d8135129.webp" alt="oraimo Necklace Lite OEB 311 wireless" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>oraimo Necklace Lite OEB 311 wireless</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৪১০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("oraimo Necklace Lite OEB 311 wireless", 1410)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-98" data-cat="earbuds">
+        <img class="prod-img" src="images/f8b96d58294d.webp" alt="P9 Plus Painted AirMax Bluetooth Wirel" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>P9 Plus Painted AirMax Bluetooth Wirel</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("P9 Plus Painted AirMax Bluetooth Wirel", 550)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-103" data-cat="earbuds">
+        <img class="prod-img" src="images/178de79b7d5e.webp" alt="Q10 4 Earphones Wireless Bluetooth Hea" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Q10 4 Earphones Wireless Bluetooth Hea</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৮৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Q10 4 Earphones Wireless Bluetooth Hea", 890)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-104" data-cat="earbuds">
+        <img class="prod-img" src="images/7bc608aca687.webp" alt="QCY MeloBuds A30 ANC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>QCY MeloBuds A30 ANC Wireless Earbuds</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৩,৩০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds A30 ANC Wireless Earbuds", 3300)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-105" data-cat="earbuds">
+        <img class="prod-img" src="images/1a7b193a9e2d.webp" alt="QCY MeloBuds N50 HT12 TWS" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>QCY MeloBuds N50 HT12 TWS</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,৩১০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds N50 HT12 TWS", 2310)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-107" data-cat="earbuds">
+        <img class="prod-img" src="images/649ad0bb240c.webp" alt="RE HG24 gaming tws" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>RE HG24 gaming tws</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,০৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("RE HG24 gaming tws", 1090)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-115" data-cat="earbuds">
+        <img class="prod-img" src="images/c5d75770fdcf.webp" alt="Soundcore R50i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Soundcore R50i 18 month warrenty</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৬৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Soundcore R50i 18 month warrenty", 1640)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-116" data-cat="earbuds">
+        <img class="prod-img" src="images/82537ac39311.webp" alt="Soundcore V20i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Soundcore V20i 18 month warrenty</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,৫৩০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Soundcore V20i 18 month warrenty", 2530)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-120" data-cat="earbuds">
+        <img class="prod-img" src="images/d5a8c9c8bfd8.webp" alt="VD EARPHONE 010 Ven Dens" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>VD EARPHONE 010 Ven Dens</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৩৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 010 Ven Dens", 350)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-121" data-cat="earbuds">
+        <img class="prod-img" src="images/093b4a4c475e.webp" alt="VD EARPHONE 022" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>VD EARPHONE 022</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৪৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 022", 450)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-123" data-cat="earbuds">
+        <img class="prod-img" src="images/ba01f30909b4.webp" alt="VEN DENS BT021 pro TWS" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>VEN DENS BT021 pro TWS</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৬৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT021 pro TWS", 640)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-124" data-cat="earbuds">
+        <img class="prod-img" src="images/8aadac5e9491.webp" alt="VEN DENS BT029 sports earphones" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>VEN DENS BT029 sports earphones</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT029 sports earphones", 540)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-125" data-cat="headphone">
+        <img class="prod-img" src="images/a0e541ed908c.webp" alt="VEN DENS HP016 Headset" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>VEN DENS HP016 Headset</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৫০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS HP016 Headset", 1500)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-126" data-cat="headphone">
+        <img class="prod-img" src="images/8c0775d7377a.webp" alt="W117 headset Hoco gaming" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>W117 headset Hoco gaming</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("W117 headset Hoco gaming", 1150)'>অর্ডার করুন</button>
       </div>
     </div>
-    <div class="tech-filter" id="techFilter" role="tablist" aria-label="Tech category"><button type="button" class="tf-chip active" data-cat="all">সব <span>121</span></button><button type="button" class="tf-chip" data-cat="earbuds">🎧 Earbuds & TWS <span>25</span></button><button type="button" class="tf-chip" data-cat="headphone">🎧 Headphones <span>6</span></button><button type="button" class="tf-chip" data-cat="neckband">📿 Neckbands <span>4</span></button><button type="button" class="tf-chip" data-cat="speaker">🔊 Speakers <span>13</span></button><button type="button" class="tf-chip" data-cat="power">🔋 Power Banks & UPS <span>10</span></button><button type="button" class="tf-chip" data-cat="charger">⚡ Chargers <span>3</span></button><button type="button" class="tf-chip" data-cat="watch">⌚ Smart Watches <span>8</span></button><button type="button" class="tf-chip" data-cat="camera">📷 Camera & Mic <span>8</span></button><button type="button" class="tf-chip" data-cat="holder">📱 Holders & Stands <span>4</span></button><button type="button" class="tf-chip" data-cat="fan">🌀 Fans & Coolers <span>7</span></button><button type="button" class="tf-chip" data-cat="light">💡 Lights & Lamps <span>15</span></button><button type="button" class="tf-chip" data-cat="care">✂️ Grooming & Care <span>8</span></button><button type="button" class="tf-chip" data-cat="gaming">🎮 Gaming <span>2</span></button><button type="button" class="tf-chip" data-cat="safety">🛡️ Safety & Lock <span>4</span></button><button type="button" class="tf-chip" data-cat="other">✨ Others <span>4</span></button></div>
+  </div>
+</section>
+
+<section class="section tech" id="tech-power" data-limit="4">
+  <div class="wrap">
+    <div class="section-head"><div><span class="tag teal">🔋 Powerbank</span><h2>Powerbank</h2><p>Power Bank আর UPS — সারাদিন চার্জ নিয়ে নিশ্চিন্তে থাকুন।</p></div></div>
+    <div class="grid">
+      <div class="card photo-card" id="tech-12" data-cat="power">
+        <img class="prod-img" src="images/6be60a35cc0b.webp" alt="20000 Mah Transparent Power bank 22 5" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>20000 Mah Transparent Power bank 22 5</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৪০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("20000 Mah Transparent Power bank 22 5", 1400)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-27" data-cat="power">
+        <img class="prod-img" src="images/17b3e845bf33.webp" alt="AWEI PA 103 30000mAh 22 5w 1" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AWEI PA 103 30000mAh 22 5w 1</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,১৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AWEI PA 103 30000mAh 22 5w 1", 2190)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-57" data-cat="power">
+        <img class="prod-img" src="images/02634c98749d.webp" alt="HOCO J155 Power bank 20000mAh" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO J155 Power bank 20000mAh</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,০০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO J155 Power bank 20000mAh", 2000)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-58" data-cat="power">
+        <img class="prod-img" src="images/ce3759a1cef6.webp" alt="Hoco MMJ 21 22 5W 100000mAh" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco MMJ 21 22 5W 100000mAh</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৫,৫৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 21 22 5W 100000mAh", 5550)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-59" data-cat="power">
+        <img class="prod-img" src="images/b5a9da5f0c7f.webp" alt="Hoco MMJ 25 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco MMJ 25 30000mAh</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,৩৭০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 25 30000mAh", 2370)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-60" data-cat="power">
+        <img class="prod-img" src="images/2d8fbce2806a.webp" alt="HOCO MMJ13 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOCO MMJ13 30000mAh</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,২৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOCO MMJ13 30000mAh", 2250)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-61" data-cat="power">
+        <img class="prod-img" src="images/b35979db41f2.webp" alt="Hoco MMJ17 22 5W 20000mAh Fast Chargin" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco MMJ17 22 5W 20000mAh Fast Chargin</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৯৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ17 22 5W 20000mAh Fast Chargin", 1940)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-93" data-cat="power">
+        <img class="prod-img" src="images/72787dd034d3.webp" alt="Olax POE D8 PRO 20000mAh Mini UPS Warr" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Olax POE D8 PRO 20000mAh Mini UPS Warr</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,৯২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Olax POE D8 PRO 20000mAh Mini UPS Warr", 2920)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-108" data-cat="power">
+        <img class="prod-img" src="images/4a9cf38fcf5c.webp" alt="RE PB027 Power bank" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>RE PB027 Power bank</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৬৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("RE PB027 Power bank", 1690)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-127" data-cat="power">
+        <img class="prod-img" src="images/9c01ebd882d5.webp" alt="WGP103 Mini WiFi Router UPS 10400mAh 5" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>WGP103 Mini WiFi Router UPS 10400mAh 5</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৪২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("WGP103 Mini WiFi Router UPS 10400mAh 5", 1420)'>অর্ডার করুন</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tech" id="tech-speaker" data-limit="4">
+  <div class="wrap">
+    <div class="section-head"><div><span class="tag teal">🔊 Speaker</span><h2>Speaker</h2><p>Bluetooth Speaker — পার্টি, বাসা বা ঘুরতে যাওয়ার জন্য।</p></div></div>
+    <div class="grid">
+      <div class="card photo-card" id="tech-33" data-cat="speaker">
+        <img class="prod-img" src="images/cdc93b02294b.webp" alt="AWEI Y887 40w speaker 2" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>AWEI Y887 40w speaker 2</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৪,৩৯০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("AWEI Y887 40w speaker 2", 4390)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-44" data-cat="speaker">
+        <img class="prod-img" src="images/39dfa6050c26.webp" alt="ET 312 Portable Bluetooth Speaker with" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>ET 312 Portable Bluetooth Speaker with</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,১২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("ET 312 Portable Bluetooth Speaker with", 1120)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-49" data-cat="speaker">
+        <img class="prod-img" src="images/81c3d503b5c4.webp" alt="G63 Smart Light Sound Speaker Fast Cha" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>G63 Smart Light Sound Speaker Fast Cha</h3>
+        <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
+        <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("G63 Smart Light Sound Speaker Fast Cha", 0)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-56" data-cat="speaker">
+        <img class="prod-img" src="images/af297f6656c7.webp" alt="Hoco HC3 speaker" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Hoco HC3 speaker</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৪২০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Hoco HC3 speaker", 1420)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-65" data-cat="speaker">
+        <img class="prod-img" src="images/efdfc9b27f21.webp" alt="HOF HF F226 20W Wireless Bluetooth Spe" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>HOF HF F226 20W Wireless Bluetooth Spe</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,২৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("HOF HF F226 20W Wireless Bluetooth Spe", 1250)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-68" data-cat="speaker">
+        <img class="prod-img" src="images/f1aa6d082a2d.webp" alt="JBL Boombox 4 Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>JBL Boombox 4 Portable Bluetooth Speak</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৩৮০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("JBL Boombox 4 Portable Bluetooth Speak", 1380)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-69" data-cat="speaker">
+        <img class="prod-img" src="images/c17859d88254.webp" alt="JBL Charge 6 Portable Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>JBL Charge 6 Portable Bluetooth Speake</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৬৮০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("JBL Charge 6 Portable Bluetooth Speake", 1680)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-70" data-cat="speaker">
+        <img class="prod-img" src="images/544a2e6a1634.webp" alt="JBL Flip 6 Portable Bluetooth Speaker" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>JBL Flip 6 Portable Bluetooth Speaker</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৬৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("JBL Flip 6 Portable Bluetooth Speaker", 1650)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-89" data-cat="speaker">
+        <img class="prod-img" src="images/4e5d33f31a4f.webp" alt="MKB SP5 True Wireless Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>MKB SP5 True Wireless Bluetooth Speake</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,৬৪০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("MKB SP5 True Wireless Bluetooth Speake", 2640)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-97" data-cat="speaker">
+        <img class="prod-img" src="images/ab637970077a.webp" alt="P193 High power Portable Speaker with" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>P193 High power Portable Speaker with</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,০০০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("P193 High power Portable Speaker with", 2000)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-100" data-cat="speaker">
+        <img class="prod-img" src="images/bdb211ee99c6.webp" alt="Portable BT Speaker 20W stereo BT5 0 1" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Portable BT Speaker 20W stereo BT5 0 1</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">১,৭৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Portable BT Speaker 20W stereo BT5 0 1", 1750)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-109" data-cat="speaker">
+        <img class="prod-img" src="images/ddaf3ee3ea98.webp" alt="Remax RB M13 portable wireless Bluetoo" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>Remax RB M13 portable wireless Bluetoo</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">২,১৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("Remax RB M13 portable wireless Bluetoo", 2150)'>অর্ডার করুন</button>
+      </div>
+      <div class="card photo-card" id="tech-119" data-cat="speaker">
+        <img class="prod-img" src="images/209dc94654df.webp" alt="V8 High Power Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
+        <h3>V8 High Power Portable Bluetooth Speak</h3>
+        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
+        <div class="price">৮৫০ টাকা</div>
+        <button type="button" class="order-btn" onclick='openOrderModal("V8 High Power Portable Bluetooth Speak", 850)'>অর্ডার করুন</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tech" id="tech-more" data-limit="4">
+  <div class="wrap">
+    <div class="section-head"><div><span class="tag teal">✨ আরও Tech</span><h2>আরও Tech Gadgets</h2><p>Charger, Smart Watch, Camera, Light, Fan সহ আরও অনেক কিছু।</p></div></div>
     <div class="grid">
       <div class="card photo-card" id="tech-9" data-cat="camera">
         <img class="prod-img" src="images/cd597beac8ef.webp" alt="10 Inch Ring Light Photo Studio Camera" loading="lazy" onclick="openLightbox(this.src)">
@@ -1369,13 +1806,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">১,০৪০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("12 Inch LED Ring Light with Tripod Sta", 1040)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-12" data-cat="power">
-        <img class="prod-img" src="images/6be60a35cc0b.webp" alt="20000 Mah Transparent Power bank 22 5" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>20000 Mah Transparent Power bank 22 5</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৪০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("20000 Mah Transparent Power bank 22 5", 1400)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-13" data-cat="holder">
         <img class="prod-img" src="images/4cc471d418e1.webp" alt="360 Rotating Metal Aluminum Alloy Phon" loading="lazy" onclick="openLightbox(this.src)">
@@ -1426,20 +1856,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">৫৮০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Aiorrax Oryn 5D Holographic Star Ocean", 580)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-20" data-cat="earbuds">
-        <img class="prod-img" src="images/230cb69c048f.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AirPods Pro 2nd Generation White Dubai</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 550)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-21" data-cat="earbuds">
-        <img class="prod-img" src="images/bd352e05d284.webp" alt="AirPods Pro 2nd Generation White Dubai" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AirPods Pro 2nd Generation White Dubai</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AirPods Pro 2nd Generation White Dubai", 550)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-22" data-cat="camera">
         <img class="prod-img" src="images/45fc80323766.webp" alt="Anker Eufy Security Indoor Cam C220" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Anker Eufy Security Indoor Cam C220</h3>
@@ -1461,68 +1877,12 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">৯৮০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Anker PowerPort III 20W Cube PD USB C", 980)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-25" data-cat="earbuds">
-        <img class="prod-img" src="images/7cdd9d9a4a45.webp" alt="Apple airpods pro FRB MASTER C" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Apple airpods pro FRB MASTER C</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৯৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Apple airpods pro FRB MASTER C", 990)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-26" data-cat="other">
         <img class="prod-img" src="images/13c4c4a5449b.webp" alt="Astronaut sensor Flying Doll" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Astronaut sensor Flying Doll</h3>
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৭০০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Astronaut sensor Flying Doll", 700)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-27" data-cat="power">
-        <img class="prod-img" src="images/17b3e845bf33.webp" alt="AWEI PA 103 30000mAh 22 5w 1" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AWEI PA 103 30000mAh 22 5w 1</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,১৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AWEI PA 103 30000mAh 22 5w 1", 2190)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-28" data-cat="earbuds">
-        <img class="prod-img" src="images/3669e2ef26a0.webp" alt="AWEI T 92 ANC PRO TWS" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AWEI T 92 ANC PRO TWS</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৯৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AWEI T 92 ANC PRO TWS", 1940)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-29" data-cat="earbuds">
-        <img class="prod-img" src="images/b60b6e254337.webp" alt="Awei T13 Pro True Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Awei T13 Pro True Wireless Earbuds</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Awei T13 Pro True Wireless Earbuds", 1140)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-30" data-cat="earbuds">
-        <img class="prod-img" src="images/50eef5c488a0.webp" alt="AWEI T56 ANC" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AWEI T56 ANC</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৮৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AWEI T56 ANC", 1890)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-31" data-cat="earbuds">
-        <img class="prod-img" src="images/9aedc6a3dabd.webp" alt="AWEI TA17 ANC" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AWEI TA17 ANC</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৭৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AWEI TA17 ANC", 1740)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-32" data-cat="earbuds">
-        <img class="prod-img" src="images/1161931dacff.webp" alt="Awei TP100 ENC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Awei TP100 ENC Wireless Earbuds</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,০৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Awei TP100 ENC Wireless Earbuds", 2040)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-33" data-cat="speaker">
-        <img class="prod-img" src="images/cdc93b02294b.webp" alt="AWEI Y887 40w speaker 2" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>AWEI Y887 40w speaker 2</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৪,৩৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("AWEI Y887 40w speaker 2", 4390)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-34" data-cat="watch">
         <img class="prod-img" src="images/d00bd7958245.webp" alt="BW11 Smartwatch 4G Direct Sim Calling" loading="lazy" onclick="openLightbox(this.src)">
@@ -1544,13 +1904,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৭৯০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Camping flashlight X 10", 790)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-37" data-cat="headphone">
-        <img class="prod-img" src="images/a1f481586216.webp" alt="Cat Ear Bluetooth Headphone BLACK" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Cat Ear Bluetooth Headphone BLACK</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Cat Ear Bluetooth Headphone BLACK", 550)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-38" data-cat="light">
         <img class="prod-img" src="images/eea2d7463375.webp" alt="Ceramic Table Lamp" loading="lazy" onclick="openLightbox(this.src)">
@@ -1587,20 +1940,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,১৯০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("DY28 Magnetic Mobile Phone Cooler Semi", 1190)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-43" data-cat="earbuds">
-        <img class="prod-img" src="images/e18e2add65e0.webp" alt="EQ34 Plus Rima ANC ENC TWS Earbud App" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>EQ34 Plus Rima ANC ENC TWS Earbud App</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৮৭০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("EQ34 Plus Rima ANC ENC TWS Earbud App", 870)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-44" data-cat="speaker">
-        <img class="prod-img" src="images/39dfa6050c26.webp" alt="ET 312 Portable Bluetooth Speaker with" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>ET 312 Portable Bluetooth Speaker with</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("ET 312 Portable Bluetooth Speaker with", 1120)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-45" data-cat="camera">
         <img class="prod-img" src="images/5576e6e6f4d5.webp" alt="F11 2 3 in 1 Wireless Microphone" loading="lazy" onclick="openLightbox(this.src)">
         <h3>F11 2 3 in 1 Wireless Microphone</h3>
@@ -1629,13 +1968,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">৭৯০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Fugetsu 3 in 1 Rechargeable Women s Ra", 790)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-49" data-cat="speaker">
-        <img class="prod-img" src="images/81c3d503b5c4.webp" alt="G63 Smart Light Sound Speaker Fast Cha" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>G63 Smart Light Sound Speaker Fast Cha</h3>
-        <div class="desc">দাম ও স্টকের জন্য মেসেজ করুন।</div>
-        <div class="price" style="font-size:.95rem">দাম জানতে মেসেজ করুন</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("G63 Smart Light Sound Speaker Fast Cha", 0)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-50" data-cat="care">
         <img class="prod-img" src="images/46e63a0c2db6.webp" alt="GYT 999 Rechargable hair trimmer" loading="lazy" onclick="openLightbox(this.src)">
         <h3>GYT 999 Rechargable hair trimmer</h3>
@@ -1657,97 +1989,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,৪৯০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("HOCO E112 smart watch", 1490)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-53" data-cat="earbuds">
-        <img class="prod-img" src="images/e2f983dc36d0.webp" alt="HOCO EQ101 EARBUDS 10 HOUR" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO EQ101 EARBUDS 10 HOUR</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,০৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ101 EARBUDS 10 HOUR", 1050)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-54" data-cat="earbuds">
-        <img class="prod-img" src="images/9a0b849d8d34.webp" alt="HOCO EQ33 Earphones" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO EQ33 Earphones</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৭৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO EQ33 Earphones", 790)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-55" data-cat="earbuds">
-        <img class="prod-img" src="images/92b6b471f2f7.webp" alt="Hoco EW88 display tws ANC" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco EW88 display tws ANC</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,২৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco EW88 display tws ANC", 1290)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-56" data-cat="speaker">
-        <img class="prod-img" src="images/af297f6656c7.webp" alt="Hoco HC3 speaker" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco HC3 speaker</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৪২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco HC3 speaker", 1420)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-57" data-cat="power">
-        <img class="prod-img" src="images/02634c98749d.webp" alt="HOCO J155 Power bank 20000mAh" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO J155 Power bank 20000mAh</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,০০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO J155 Power bank 20000mAh", 2000)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-58" data-cat="power">
-        <img class="prod-img" src="images/ce3759a1cef6.webp" alt="Hoco MMJ 21 22 5W 100000mAh" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco MMJ 21 22 5W 100000mAh</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫,৫৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 21 22 5W 100000mAh", 5550)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-59" data-cat="power">
-        <img class="prod-img" src="images/b5a9da5f0c7f.webp" alt="Hoco MMJ 25 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco MMJ 25 30000mAh</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,৩৭০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ 25 30000mAh", 2370)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-60" data-cat="power">
-        <img class="prod-img" src="images/2d8fbce2806a.webp" alt="HOCO MMJ13 30000mAh" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO MMJ13 30000mAh</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,২৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO MMJ13 30000mAh", 2250)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-61" data-cat="power">
-        <img class="prod-img" src="images/b35979db41f2.webp" alt="Hoco MMJ17 22 5W 20000mAh Fast Chargin" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco MMJ17 22 5W 20000mAh Fast Chargin</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৯৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco MMJ17 22 5W 20000mAh Fast Chargin", 1940)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-62" data-cat="headphone">
-        <img class="prod-img" src="images/35e54c1951d4.webp" alt="HOCO W118 Hoco gaming headset" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO W118 Hoco gaming headset</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO W118 Hoco gaming headset", 1120)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-63" data-cat="headphone">
-        <img class="prod-img" src="images/cef837175203.webp" alt="Hoco W35 Air Bluetooth Wireless Headph" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Hoco W35 Air Bluetooth Wireless Headph</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,২৩০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Hoco W35 Air Bluetooth Wireless Headph", 1230)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-64" data-cat="headphone">
-        <img class="prod-img" src="images/a66d203d8e5d.webp" alt="HOCO W35 Wireless Bluetooth Headphone" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOCO W35 Wireless Bluetooth Headphone</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১৭০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOCO W35 Wireless Bluetooth Headphone", 1170)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-65" data-cat="speaker">
-        <img class="prod-img" src="images/efdfc9b27f21.webp" alt="HOF HF F226 20W Wireless Bluetooth Spe" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>HOF HF F226 20W Wireless Bluetooth Spe</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,২৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("HOF HF F226 20W Wireless Bluetooth Spe", 1250)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-66" data-cat="camera">
         <img class="prod-img" src="images/55f8f00867a9.webp" alt="Hollyland LARK M2 Wireless Lavalier Mi" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Hollyland LARK M2 Wireless Lavalier Mi</h3>
@@ -1761,27 +2002,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৪,০১০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("J36 Ultra Online Gaming Handheld 2", 4010)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-68" data-cat="speaker">
-        <img class="prod-img" src="images/f1aa6d082a2d.webp" alt="JBL Boombox 4 Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>JBL Boombox 4 Portable Bluetooth Speak</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৩৮০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("JBL Boombox 4 Portable Bluetooth Speak", 1380)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-69" data-cat="speaker">
-        <img class="prod-img" src="images/c17859d88254.webp" alt="JBL Charge 6 Portable Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>JBL Charge 6 Portable Bluetooth Speake</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৬৮০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("JBL Charge 6 Portable Bluetooth Speake", 1680)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-70" data-cat="speaker">
-        <img class="prod-img" src="images/544a2e6a1634.webp" alt="JBL Flip 6 Portable Bluetooth Speaker" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>JBL Flip 6 Portable Bluetooth Speaker</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৬৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("JBL Flip 6 Portable Bluetooth Speaker", 1650)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-71" data-cat="fan">
         <img class="prod-img" src="images/dde7477f4822.webp" alt="JY 2218 turbo table fan" loading="lazy" onclick="openLightbox(this.src)">
@@ -1860,20 +2080,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,১৮০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("LED Neon Light with Remote Control APP", 1180)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-82" data-cat="earbuds">
-        <img class="prod-img" src="images/681b33b4f927.webp" alt="M10 TWS Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>M10 TWS Bluetooth</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("M10 TWS Bluetooth", 520)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-83" data-cat="earbuds">
-        <img class="prod-img" src="images/49d632874701.webp" alt="M27 tws wireless Bluetooth" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>M27 tws wireless Bluetooth</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৪৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("M27 tws wireless Bluetooth", 490)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-84" data-cat="fan">
         <img class="prod-img" src="images/a9c02ad40dc3.webp" alt="MEMO CX07 15W Magnetic Semiconductor M" loading="lazy" onclick="openLightbox(this.src)">
         <h3>MEMO CX07 15W Magnetic Semiconductor M</h3>
@@ -1909,26 +2115,12 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,০৯০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Mini Star Projector Night Light Nebula", 1090)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-89" data-cat="speaker">
-        <img class="prod-img" src="images/4e5d33f31a4f.webp" alt="MKB SP5 True Wireless Bluetooth Speake" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>MKB SP5 True Wireless Bluetooth Speake</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,৬৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("MKB SP5 True Wireless Bluetooth Speake", 2640)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-90" data-cat="watch">
         <img class="prod-img" src="images/82c0f93c0c58.webp" alt="Mkb v03 band" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Mkb v03 band</h3>
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৭৮০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Mkb v03 band", 780)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-91" data-cat="neckband">
-        <img class="prod-img" src="images/0f2eb264e51f.webp" alt="MMJ11 ENC Bluetooth Neckband Earphone" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>MMJ11 ENC Bluetooth Neckband Earphone</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("MMJ11 ENC Bluetooth Neckband Earphone", 1140)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-92" data-cat="light">
         <img class="prod-img" src="images/563dd9219a6f.webp" alt="O shaped crystal table lamp" loading="lazy" onclick="openLightbox(this.src)">
@@ -1937,61 +2129,12 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">৮৫০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("O shaped crystal table lamp", 850)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-93" data-cat="power">
-        <img class="prod-img" src="images/72787dd034d3.webp" alt="Olax POE D8 PRO 20000mAh Mini UPS Warr" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Olax POE D8 PRO 20000mAh Mini UPS Warr</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,৯২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Olax POE D8 PRO 20000mAh Mini UPS Warr", 2920)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-94" data-cat="neckband">
-        <img class="prod-img" src="images/121862ebd5e1.webp" alt="OnePlus Bullet Wireless Z3 Neckband" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>OnePlus Bullet Wireless Z3 Neckband</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,১৭০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullet Wireless Z3 Neckband", 2170)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-95" data-cat="neckband">
-        <img class="prod-img" src="images/cb8408ad25a6.webp" alt="OnePlus Bullets Wireless Z3 neckband e" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>OnePlus Bullets Wireless Z3 neckband e</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৮০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("OnePlus Bullets Wireless Z3 neckband e", 1800)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-96" data-cat="neckband">
-        <img class="prod-img" src="images/9c23d8135129.webp" alt="oraimo Necklace Lite OEB 311 wireless" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>oraimo Necklace Lite OEB 311 wireless</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৪১০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("oraimo Necklace Lite OEB 311 wireless", 1410)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-97" data-cat="speaker">
-        <img class="prod-img" src="images/ab637970077a.webp" alt="P193 High power Portable Speaker with" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>P193 High power Portable Speaker with</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,০০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("P193 High power Portable Speaker with", 2000)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-98" data-cat="earbuds">
-        <img class="prod-img" src="images/f8b96d58294d.webp" alt="P9 Plus Painted AirMax Bluetooth Wirel" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>P9 Plus Painted AirMax Bluetooth Wirel</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("P9 Plus Painted AirMax Bluetooth Wirel", 550)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-99" data-cat="light">
         <img class="prod-img" src="images/3285760c5d3a.webp" alt="Pet moon table lamp" loading="lazy" onclick="openLightbox(this.src)">
         <h3>Pet moon table lamp</h3>
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৭২০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Pet moon table lamp", 720)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-100" data-cat="speaker">
-        <img class="prod-img" src="images/bdb211ee99c6.webp" alt="Portable BT Speaker 20W stereo BT5 0 1" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Portable BT Speaker 20W stereo BT5 0 1</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৭৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Portable BT Speaker 20W stereo BT5 0 1", 1750)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-101" data-cat="care">
         <img class="prod-img" src="images/fe89cf9f96dc.webp" alt="Portable Mini Handheld Mesh Nebulizer" loading="lazy" onclick="openLightbox(this.src)">
@@ -2007,54 +2150,12 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,৯৬০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Q02 face tracking phone holder", 1960)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-103" data-cat="earbuds">
-        <img class="prod-img" src="images/178de79b7d5e.webp" alt="Q10 4 Earphones Wireless Bluetooth Hea" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Q10 4 Earphones Wireless Bluetooth Hea</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৮৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Q10 4 Earphones Wireless Bluetooth Hea", 890)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-104" data-cat="earbuds">
-        <img class="prod-img" src="images/7bc608aca687.webp" alt="QCY MeloBuds A30 ANC Wireless Earbuds" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>QCY MeloBuds A30 ANC Wireless Earbuds</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৩,৩০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds A30 ANC Wireless Earbuds", 3300)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-105" data-cat="earbuds">
-        <img class="prod-img" src="images/1a7b193a9e2d.webp" alt="QCY MeloBuds N50 HT12 TWS" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>QCY MeloBuds N50 HT12 TWS</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,৩১০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("QCY MeloBuds N50 HT12 TWS", 2310)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-106" data-cat="gaming">
         <img class="prod-img" src="images/95a5d3cd6bdd.webp" alt="R36S Retro Handheld Video Game Console" loading="lazy" onclick="openLightbox(this.src)">
         <h3>R36S Retro Handheld Video Game Console</h3>
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">২,৯৫০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("R36S Retro Handheld Video Game Console", 2950)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-107" data-cat="earbuds">
-        <img class="prod-img" src="images/649ad0bb240c.webp" alt="RE HG24 gaming tws" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>RE HG24 gaming tws</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,০৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("RE HG24 gaming tws", 1090)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-108" data-cat="power">
-        <img class="prod-img" src="images/4a9cf38fcf5c.webp" alt="RE PB027 Power bank" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>RE PB027 Power bank</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৬৯০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("RE PB027 Power bank", 1690)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-109" data-cat="speaker">
-        <img class="prod-img" src="images/ddaf3ee3ea98.webp" alt="Remax RB M13 portable wireless Bluetoo" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Remax RB M13 portable wireless Bluetoo</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,১৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Remax RB M13 portable wireless Bluetoo", 2150)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-110" data-cat="light">
         <img class="prod-img" src="images/0f4d0e1abc29.webp" alt="Sanford High Power Super Bright Flashl" loading="lazy" onclick="openLightbox(this.src)">
@@ -2091,20 +2192,6 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">৯৬০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("Sokany SK 2211 Professional Hair Dryer", 960)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-115" data-cat="earbuds">
-        <img class="prod-img" src="images/c5d75770fdcf.webp" alt="Soundcore R50i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Soundcore R50i 18 month warrenty</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৬৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Soundcore R50i 18 month warrenty", 1640)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-116" data-cat="earbuds">
-        <img class="prod-img" src="images/82537ac39311.webp" alt="Soundcore V20i 18 month warrenty" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>Soundcore V20i 18 month warrenty</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">২,৫৩০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("Soundcore V20i 18 month warrenty", 2530)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-117" data-cat="camera">
         <img class="prod-img" src="images/012201d1992b.webp" alt="V380 3 lens bulb camera" loading="lazy" onclick="openLightbox(this.src)">
         <h3>V380 3 lens bulb camera</h3>
@@ -2119,68 +2206,12 @@ body.searching .more-wrap, .section.filtering .more-wrap, body.searching .tech-f
         <div class="price">১,৬২০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("V380 Pro dual lens Wi Fi smart securit", 1620)'>অর্ডার করুন</button>
       </div>
-      <div class="card photo-card" id="tech-119" data-cat="speaker">
-        <img class="prod-img" src="images/209dc94654df.webp" alt="V8 High Power Portable Bluetooth Speak" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>V8 High Power Portable Bluetooth Speak</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৮৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("V8 High Power Portable Bluetooth Speak", 850)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-120" data-cat="earbuds">
-        <img class="prod-img" src="images/d5a8c9c8bfd8.webp" alt="VD EARPHONE 010 Ven Dens" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>VD EARPHONE 010 Ven Dens</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৩৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 010 Ven Dens", 350)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-121" data-cat="earbuds">
-        <img class="prod-img" src="images/093b4a4c475e.webp" alt="VD EARPHONE 022" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>VD EARPHONE 022</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৪৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("VD EARPHONE 022", 450)'>অর্ডার করুন</button>
-      </div>
       <div class="card photo-card" id="tech-122" data-cat="holder">
         <img class="prod-img" src="images/637a36bbcb11.webp" alt="VD HD027 phone holder" loading="lazy" onclick="openLightbox(this.src)">
         <h3>VD HD027 phone holder</h3>
         <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
         <div class="price">৪২০ টাকা</div>
         <button type="button" class="order-btn" onclick='openOrderModal("VD HD027 phone holder", 420)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-123" data-cat="earbuds">
-        <img class="prod-img" src="images/ba01f30909b4.webp" alt="VEN DENS BT021 pro TWS" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>VEN DENS BT021 pro TWS</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৬৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT021 pro TWS", 640)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-124" data-cat="earbuds">
-        <img class="prod-img" src="images/8aadac5e9491.webp" alt="VEN DENS BT029 sports earphones" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>VEN DENS BT029 sports earphones</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">৫৪০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS BT029 sports earphones", 540)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-125" data-cat="headphone">
-        <img class="prod-img" src="images/a0e541ed908c.webp" alt="VEN DENS HP016 Headset" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>VEN DENS HP016 Headset</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৫০০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("VEN DENS HP016 Headset", 1500)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-126" data-cat="headphone">
-        <img class="prod-img" src="images/8c0775d7377a.webp" alt="W117 headset Hoco gaming" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>W117 headset Hoco gaming</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,১৫০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("W117 headset Hoco gaming", 1150)'>অর্ডার করুন</button>
-      </div>
-      <div class="card photo-card" id="tech-127" data-cat="power">
-        <img class="prod-img" src="images/9c01ebd882d5.webp" alt="WGP103 Mini WiFi Router UPS 10400mAh 5" loading="lazy" onclick="openLightbox(this.src)">
-        <h3>WGP103 Mini WiFi Router UPS 10400mAh 5</h3>
-        <div class="desc">স্টক ও ডেলিভারির জন্য মেসেজ করুন।</div>
-        <div class="price">১,৪২০ টাকা</div>
-        <button type="button" class="order-btn" onclick='openOrderModal("WGP103 Mini WiFi Router UPS 10400mAh 5", 1420)'>অর্ডার করুন</button>
       </div>
       <div class="card photo-card" id="tech-128" data-cat="care">
         <img class="prod-img" src="images/934cf4c5baa6.webp" alt="Wireless Neck Shoulder Massager with H" loading="lazy" onclick="openLightbox(this.src)">
@@ -2384,7 +2415,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLi
   /* ===== "More products +" for every product section =====
      To add a product later: copy a whole <div class="card photo-card soon"> block and paste it
      at the end of that section's grid. Anything beyond MORE_LIMIT is tucked behind the button. */
-  ['three-party','three-print','boutique','sarees','tech','watches','handbags','jewellery'].forEach(function(id){
+  ['three-party','three-print','tech-earbuds','tech-power','tech-speaker','tech-more','boutique','sarees','watches','handbags','jewellery'].forEach(function(id){
     var sec = document.getElementById(id); if(!sec) return;
     var grid = sec.querySelector('.grid'); if(!grid) return;
     var lim = parseInt(sec.getAttribute('data-limit'), 10) || MORE_LIMIT;   // e.g. <section data-limit="8">
@@ -2872,7 +2903,7 @@ if ('serviceWorker' in navigator) {
 (function(){
   var inp=document.getElementById('siteSearch'), clr=document.getElementById('searchClear'), info=document.getElementById('searchInfo');
   var tech=document.getElementById('tech'), chips=document.getElementById('techFilter');
-  var secs=['three-party','three-print','tech'].map(function(i){return document.getElementById(i)}).filter(Boolean);
+  var secs=['three-party','three-print','tech-earbuds','tech-power','tech-speaker','tech-more'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   var head=document.getElementById('threepiece');
   function norm(t){return (t||'').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]+/gu,' ').trim();}
   var items=[];
@@ -2900,7 +2931,7 @@ if ('serviceWorker' in navigator) {
     if(!q){
       document.body.classList.remove('searching');
       secs.forEach(function(s){s.classList.remove('is-hidden');});
-      if(head) head.classList.remove('is-hidden');
+      if(head) head.classList.remove('is-hidden'); tech.classList.remove('is-hidden');
       items.forEach(function(it){it.c.classList.remove('is-hidden');});
       info.innerHTML=''; setCat(curCat); return;
     }
@@ -2912,7 +2943,7 @@ if ('serviceWorker' in navigator) {
       if(ok){n++; per[it.sec.id]=1;}
     });
     secs.forEach(function(s){s.classList.toggle('is-hidden',!per[s.id]);});
-    if(head) head.classList.add('is-hidden');
+    if(head) head.classList.add('is-hidden'); tech.classList.add('is-hidden');
     info.innerHTML=n?('<b>'+n+'</b>টি প্রোডাক্ট পাওয়া গেছে'):'কোনো প্রোডাক্ট পাওয়া যায়নি — <a href="https://wa.me/8801786555387" target="_blank" rel="noopener">WhatsApp-এ জিজ্ঞেস করুন</a>';
   }
   window.kyReset=function(){ if(inp&&inp.value){inp.value=''; search();} if(curCat!=='all') setCat('all'); };
